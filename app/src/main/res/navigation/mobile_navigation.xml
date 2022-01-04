@@ -15,11 +15,20 @@
         android:id="@+id/navigation_lists"
         android:name="ru.fefu.courseproject_garmentfactory.ui.lists.ListsFragment"
         android:label="@string/title_orders"
-        tools:layout="@layout/fragment_orders" />
+        tools:layout="@layout/fragment_orders" >
+        <action
+            android:id="@+id/action_navigation_lists_to_fittingsInfoFragment"
+            app:destination="@id/fittingsInfoFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_orders"
         android:name="ru.fefu.courseproject_garmentfactory.ui.orders.OrdersFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/fittingsInfoFragment"
+        android:name="ru.fefu.courseproject_garmentfactory.ui.lists.details.FittingsInfoFragment"
+        android:label="fragment_fittings_info"
+        tools:layout="@layout/fragment_fittings_info" />
 </navigation>

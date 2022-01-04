@@ -3,8 +3,10 @@ package ru.fefu.courseproject_garmentfactory
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import ru.fefu.courseproject_garmentfactory.databinding.ActivityMainBinding
@@ -31,5 +33,6 @@ class MainActivity : AppCompatActivity() {
         )*/
         //setupActionBarWithNavController(navController)
         navView.setupWithNavController(navController)
+
     }
 }

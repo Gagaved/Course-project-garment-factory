@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3728205128205128" />
+        <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/drawable/drop_shadow.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/drawable/ic_back.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3728205128205128" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3728205128205128" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/drawable/ic_lists.xml" value="0.3728205128205128" />
@@ -12,13 +14,16 @@
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/drawable/ic_profile.xml" value="0.3728205128205128" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/activity_main.xml" value="0.3625" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/fragment_fitting.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/fragment_fittings.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/fragment_fittings_info.xml" value="0.5" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/fragment_lists.xml" value="0.3625" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/fragment_materials.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/fragment_orders.xml" value="0.3625" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/fragment_profile.xml" value="0.3625" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/fragment_pruducts.xml" value="0.33" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/fragment_scrolling.xml" value="0.20677083333333332" />
-        <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/item_list.xml" value="0.67" />
+        <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/fragments_fitting_info.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/item_list.xml" value="0.64" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/layout/lists_item.xml" value="0.33" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
         <entry key="..\:/Users/Gagaved/AndroidStudioProjects/Courseprojectgarmentfactory/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3728205128205128" />

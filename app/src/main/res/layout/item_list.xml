@@ -6,13 +6,11 @@
     card_view:cardUseCompatPadding="true"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    card_view:cardElevation="6dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    android:shadowColor="#000"
+    app:cardElevation="3dp"
+    android:shadowColor="@color/orange"
     android:shadowDx="30"
     android:shadowDy="60"
-    android:shadowRadius="120"
+    android:shadowRadius="1000000000000"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
