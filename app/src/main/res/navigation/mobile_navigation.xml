@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_navigation_lists_to_materialsInfoFragment"
             app:destination="@id/materialsInfoFragment" />
+        <action
+            android:id="@+id/action_navigation_lists_to_productsInfoFragment"
+            app:destination="@id/productsInfoFragment" />
     </fragment>
 
     <fragment
@@ -38,4 +41,8 @@
         android:id="@+id/materialsInfoFragment"
         android:name="ru.fefu.courseproject_garmentfactory.ui.lists.details.MaterialsInfoFragment"
         android:label="MaterialsInfoFragment" />
+    <fragment
+        android:id="@+id/productsInfoFragment"
+        android:name="ru.fefu.courseproject_garmentfactory.ui.lists.details.ProductsInfoFragment"
+        android:label="ProductsInfoFragment" />
 </navigation>

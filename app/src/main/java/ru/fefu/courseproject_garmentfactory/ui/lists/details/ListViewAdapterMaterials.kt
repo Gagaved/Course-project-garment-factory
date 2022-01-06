@@ -8,8 +8,8 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import ru.fefu.courseproject_garmentfactory.R
 
-class ListViewAdapter(private val context: Context,
-                    private val list: ArrayList<Pair<String,String>>) : BaseAdapter() {
+class ListViewAdapterMaterials(private val context: Context,
+                               private val list: ArrayList<Pair<String,String>>) : BaseAdapter() {
 
     private val inflater: LayoutInflater
             = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -27,15 +27,12 @@ class ListViewAdapter(private val context: Context,
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val itemView = inflater.inflate(R.layout.item_roll, parent, false)
+        val itemView = inflater.inflate(R.layout.item_historychange, parent, false)
         val codeTextView = itemView.findViewById(R.id.code) as TextView
         val lengthTextView = itemView.findViewById(R.id.length) as TextView
         val button = itemView.findViewById(R.id.buttonContinue) as MaterialButton
         val inputText = itemView.findViewById(R.id.input) as TextInputEditText
-
-        codeTextView.text = list[position].first
-        lengthTextView.text = list[position].second
-
+        //lengthTextView.text = list[position].second
         return itemView
     }
 }

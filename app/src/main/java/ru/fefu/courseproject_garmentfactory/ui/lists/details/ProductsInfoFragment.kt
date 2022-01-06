@@ -10,10 +10,10 @@ import androidx.navigation.fragment.findNavController
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentMaterialsInfoBinding
 
 
-class MaterialsInfoFragment : Fragment() {
+class ProductsInfoFragment : Fragment() {
     private var _binding: FragmentMaterialsInfoBinding? = null
     private val binding get() = _binding!!
-    private val rollList = arrayListOf<Pair<String,String>>(Pair("test","test"),Pair("test","test"),Pair("test","test"),Pair("test","test"),Pair("test","test"))
+    private val historychangeList = arrayListOf<Pair<String,String>>(Pair("test","test"),Pair("test","test"),Pair("test","test"),Pair("test","test"),Pair("test","test"))
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -32,9 +32,9 @@ class MaterialsInfoFragment : Fragment() {
             findNavController().popBackStack()
         }
         val inflater = layoutInflater
-        val myHeader = inflater.inflate(ru.fefu.courseproject_garmentfactory.R.layout.header_materials_info,binding.listview, false) as ViewGroup
+        val myHeader = inflater.inflate(ru.fefu.courseproject_garmentfactory.R.layout.header_products_info,binding.listview, false) as ViewGroup
         binding.listview.addHeaderView(myHeader, null, false)
 
-        binding.listview.adapter = context?.let { ListViewAdapterProducts(it,rollList) }
+        binding.listview.adapter = context?.let { ListViewAdapterProducts(it,historychangeList) }
     }
 }

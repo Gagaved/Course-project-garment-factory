@@ -8,10 +8,12 @@
     android:layout_width="match_parent"
     app:cardElevation="3dp"
     android:shadowColor="@color/orange"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     android:shadowDx="30"
     android:shadowDy="60"
     android:shadowRadius="1000000000000"
-    >
+    android:focusable="true">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.ui.lists.ListRecyclerViewAdapter
@@ -40,10 +41,10 @@ class ProductsFragment : Fragment() {
             bundle.putInt("ActivityID",activities[it].id )
             arguments = bundle
             findNavController().navigate(R.id.action_workoutFragment_to_myActivityDetailsFragment,arguments)
-        }
-        binding.startActivity.setOnClickListener {
-            findNavController().navigate(R.id.action_workoutFragment_to_newActivityFragment)
         }*/
+        adapter.setItemClickListener {
+            findNavController().navigate(R.id.action_navigation_lists_to_productsInfoFragment,arguments)
+        }
     }
 
     private fun fillDate() {
