@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/down_radius10dp_shape">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/default_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/DetailedProductVendor"
+                style="@style/DetailedProductTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/DetailedProductVendor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/DetailedProductTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="76612312712"
+                app:layout_constraintBottom_toBottomOf="@+id/DetailedProductVendor"
+                app:layout_constraintStart_toEndOf="@+id/DetailedProductVendor"
+                app:layout_constraintTop_toTopOf="@+id/DetailedProductVendor" />
+
+            <TextView
+                android:id="@+id/DetailedProductLength"
+                style="@style/DetailedProductTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/DetailedProductLength"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/DetailedProductVendor" />
+
+            <TextView
+                style="@style/DetailedProductTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 м"
+                app:layout_constraintBottom_toBottomOf="@+id/DetailedProductLength"
+                app:layout_constraintStart_toEndOf="@+id/DetailedProductLength"
+                app:layout_constraintTop_toTopOf="@+id/DetailedProductLength" />
+
+            <TextView
+                android:id="@+id/DetailedProductWidth"
+                style="@style/DetailedProductTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/DetailedProductWidth"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/DetailedProductLength" />
+
+            <TextView
+                style="@style/DetailedProductTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 м"
+                app:layout_constraintBottom_toBottomOf="@+id/DetailedProductWidth"
+                app:layout_constraintStart_toEndOf="@+id/DetailedProductWidth"
+                app:layout_constraintTop_toTopOf="@+id/DetailedProductWidth" />
+
+            <TextView
+                android:id="@+id/DetailedProductCloths"
+                style="@style/DetailedProductTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/DetailedProductCloths"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/DetailedProductWidth" />
+
+            <TextView
+                android:id="@+id/DetailedProductClothsList"
+                style="@style/DetailedProductTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ткань 1\nткань 2"
+                app:layout_constraintEnd_toEndOf="@+id/DetailedProductCloths"
+                app:layout_constraintStart_toStartOf="@+id/DetailedProductCloths"
+                app:layout_constraintTop_toBottomOf="@+id/DetailedProductCloths" />
+
+            <TextView
+                android:id="@+id/DetailedProductAccessories"
+                style="@style/DetailedProductTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/DetailedProductAccessories"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/DetailedProductClothsList" />
+
+            <TextView
+                style="@style/DetailedProductTextStyle"
+                android:id="@+id/DetailedProductAccessoriesList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="фурнитура 1\nфурнитура 2"
+                app:layout_constraintEnd_toEndOf="@+id/DetailedProductAccessories"
+                app:layout_constraintStart_toStartOf="@+id/DetailedProductAccessories"
+                app:layout_constraintTop_toBottomOf="@+id/DetailedProductAccessories" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
