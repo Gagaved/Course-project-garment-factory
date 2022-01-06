@@ -1,6 +1,6 @@
 package ru.fefu.courseproject_garmentfactory.ui.lists.details
 
-import ListViewAdapterProducts
+import ListViewAdapterMaterials
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,6 +35,6 @@ class MaterialsInfoFragment : Fragment() {
         val myHeader = inflater.inflate(ru.fefu.courseproject_garmentfactory.R.layout.header_materials_info,binding.listview, false) as ViewGroup
         binding.listview.addHeaderView(myHeader, null, false)
 
-        binding.listview.adapter = context?.let { ListViewAdapterProducts(it,rollList) }
+        binding.listview.adapter = context?.let { ListViewAdapterMaterials(it,rollList) }
     }
 }
