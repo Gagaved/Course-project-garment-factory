@@ -27,7 +27,7 @@ class ListViewAdapterMaterials(private val context: Context,
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val itemView = inflater.inflate(R.layout.item_historychange, parent, false)
+        val itemView = inflater.inflate(R.layout.item_roll, parent, false)
         val codeTextView = itemView.findViewById(R.id.code) as TextView
         val lengthTextView = itemView.findViewById(R.id.length) as TextView
         val button = itemView.findViewById(R.id.buttonContinue) as MaterialButton
