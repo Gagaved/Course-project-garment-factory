@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.fefu.courseproject_garmentfactory.R
-import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
-import ru.fefu.courseproject_garmentfactory.databinding.FragmentMaterialsBinding
+import ru.fefu.courseproject_garmentfactory.databinding.FragmentOrderDetailsProductsBinding
 import ru.fefu.courseproject_garmentfactory.ui.ItemListData
+import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
 
-class MaterialsFragment : Fragment() {
-    private var _binding: FragmentMaterialsBinding? = null
+class OrderDetailsProductsFragment : Fragment() {
+    private var _binding: FragmentOrderDetailsProductsBinding? = null
     private val binding get() = _binding!!
     private val items = mutableListOf<ItemListData>()
     private val adapter = ListRecyclerViewAdapter(items)
@@ -26,7 +26,7 @@ class MaterialsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMaterialsBinding.inflate(inflater, container, false)
+        _binding = FragmentOrderDetailsProductsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,17 +36,11 @@ class MaterialsFragment : Fragment() {
         val recycleView = binding.recyclerView
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         recycleView.adapter = adapter
-        /*adapter.setItemClickListener {
-            val bundle = Bundle()
-            bundle.putInt("ActivityID",activities[it].id )
-            arguments = bundle
-            findNavController().navigate(R.id.action_workoutFragment_to_myActivityDetailsFragment,arguments)
-        }
-        binding.startActivity.setOnClickListener {
-            findNavController().navigate(R.id.action_workoutFragment_to_newActivityFragment)
-        }*/
         adapter.setItemClickListener {
-            findNavController().navigate(R.id.action_navigation_lists_to_materialsInfoFragment,arguments)
+            /*val bundle = Bundle()
+            bundle.putInt("ActivityID",activities[it].id )
+            arguments = bundle*/
+            findNavController().navigate(R.id.action_orderDetailsFragment_to_productsInfoFragment,arguments)
         }
     }
 

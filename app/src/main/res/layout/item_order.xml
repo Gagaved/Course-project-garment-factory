@@ -18,65 +18,82 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/vertical_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.45" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/horizontal_guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
-
-        <ImageView
-            android:id="@+id/image5"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/default_image"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="-3dp"
-            tools:layout_editor_absoluteY="0dp" />
+            app:layout_constraintGuide_percent="0.25"
+            card_view:layout_constraintGuide_end="223dp" />
 
         <TextView
+            android:id="@+id/codetext"
+            android:paddingTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Название:"
+            android:text="Номер:"
             android:textColor="@color/black"
             android:textSize="16sp"
-            card_view:layout_constraintBottom_toTopOf="@+id/horizontal_guideline"
-            card_view:layout_constraintEnd_toStartOf="@id/vertical_guideline" />
+            card_view:layout_constraintEnd_toStartOf="@id/vertical_guideline"
+            tools:ignore="MissingConstraints" />
+
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/customertext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="20dp"
-            android:text="Name"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            card_view:layout_constraintBottom_toTopOf="@+id/horizontal_guideline"
-            card_view:layout_constraintStart_toStartOf="@id/vertical_guideline" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Артикул:"
+            android:paddingTop="4dp"
+            android:text="Заказчик:"
             android:textColor="@color/black"
             android:textSize="16sp"
             card_view:layout_constraintEnd_toEndOf="@id/vertical_guideline"
-            card_view:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+            card_view:layout_constraintTop_toBottomOf="@+id/codetext" />
         <TextView
+            android:id="@+id/statustext"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:text="Статус:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            card_view:layout_constraintEnd_toEndOf="@id/vertical_guideline"
+            card_view:layout_constraintTop_toBottomOf="@+id/customertext" />
+
+        <TextView
+            android:id="@+id/customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingTop="4dp"
+            android:text="CUSTOMER"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            card_view:layout_constraintStart_toEndOf="@id/vertical_guideline"
+            card_view:layout_constraintTop_toBottomOf="@+id/code" />
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="4dp"
+            android:paddingStart="20dp"
+            android:text="STATUS"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            card_view:layout_constraintStart_toEndOf="@id/vertical_guideline"
+            card_view:layout_constraintTop_toBottomOf="@+id/customer" />
+        <TextView
+            android:paddingTop="10dp"
             android:id="@+id/code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
-            android:text="Артикул:"
+            android:text="CODE"
             android:textColor="@color/black"
             android:textSize="16sp"
             card_view:layout_constraintStart_toEndOf="@id/vertical_guideline"
-            card_view:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

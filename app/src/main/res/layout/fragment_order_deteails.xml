@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_workout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="Title"
+        />
+    <FrameLayout
+        android:id="@+id/shadowframe"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@drawable/drop_shadow"
+        tools:ignore="MissingConstraints">
+    </FrameLayout>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/lists_tab_layout"
         android:layout_width="match_parent"
@@ -14,7 +36,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/lists_view_pager2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:ignore="MissingConstraints">
     </androidx.viewpager2.widget.ViewPager2>
 </LinearLayout>

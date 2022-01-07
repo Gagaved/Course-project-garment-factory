@@ -9,8 +9,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentFittingsBinding
-import ru.fefu.courseproject_garmentfactory.ui.lists.ListRecyclerViewAdapter
-import ru.fefu.courseproject_garmentfactory.ui.lists.ItemListData
+import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
+import ru.fefu.courseproject_garmentfactory.ui.ItemListData
 
 class FittingsFragment : Fragment() {
     private var _binding: FragmentFittingsBinding? = null
