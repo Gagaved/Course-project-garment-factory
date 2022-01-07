@@ -31,7 +31,11 @@
         android:id="@+id/navigation_orders"
         android:name="ru.fefu.courseproject_garmentfactory.ui.orders.OrdersFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_orders_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fittingsInfoFragment"
         android:name="ru.fefu.courseproject_garmentfactory.ui.lists.details.FittingsInfoFragment"
@@ -45,4 +49,12 @@
         android:id="@+id/productsInfoFragment"
         android:name="ru.fefu.courseproject_garmentfactory.ui.lists.details.ProductsInfoFragment"
         android:label="ProductsInfoFragment" />
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="ru.fefu.courseproject_garmentfactory.ui.orders.details.OrderDetailsFragment"
+        android:label="OrderDetailsFragment" >
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_productsInfoFragment"
+            app:destination="@id/productsInfoFragment" />
+    </fragment>
 </navigation>

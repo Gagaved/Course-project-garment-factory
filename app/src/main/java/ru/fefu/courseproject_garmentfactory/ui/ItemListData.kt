@@ -1,4 +1,4 @@
-package ru.fefu.courseproject_garmentfactory.ui.lists
+package ru.fefu.courseproject_garmentfactory.ui
 
 import java.time.LocalDateTime
 data class ItemListData(
