@@ -4,19 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#057D9F"
     tools:context=".ui.profile.ProfileFragment">
 
+    <ImageView
+
+        android:id="@+id/ProfileImage"
+        android:layout_width="150dp"
+        android:layout_marginTop="65dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/default_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id="@+id/text_profile"
+        android:id="@+id/ProfileFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Александр\nАлександрович\nАлександров"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ProfileImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ProfileImage"
+        app:layout_constraintTop_toTopOf="@+id/ProfileImage" />
+
+    <TextView
+        android:id="@+id/ProfileTypeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Тип аккаунта:"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/ProfileImage"
+        app:layout_constraintStart_toStartOf="@+id/ProfileImage"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileImage" />
+
+    <TextView
+        android:id="@+id/ProfileAccountType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="манагер"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ProfileTypeText"
+        app:layout_constraintStart_toEndOf="@+id/ProfileTypeText"
+        app:layout_constraintTop_toTopOf="@+id/ProfileTypeText" />
+
+    <Button
+        android:id="@+id/ProfileButtonExit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
         android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginHorizontal="80dp"
+        android:paddingVertical="10dp"
+        android:text="@string/ProfileExit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ProfileAccountType"
+        app:layout_constraintVertical_bias="0.9" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
