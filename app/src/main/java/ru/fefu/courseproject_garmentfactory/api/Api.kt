@@ -1,15 +1,13 @@
 package ru.fefu.courseproject_garmentfactory.api
 
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
+import ru.fefu.courseproject_garmentfactory.api.models.LoginRequest
 import ru.fefu.courseproject_garmentfactory.api.models.LoginResponse
 
 interface Api {
-    @POST("api/v1/login")
+    @POST("api/v1/plane_login")
     fun login(
-        @Field("login") login: String,
-        @Field("password") password: String
+        @Body data: LoginRequest
     ): Call<LoginResponse>
 }
