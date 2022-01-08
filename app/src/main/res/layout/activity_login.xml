@@ -79,5 +79,19 @@
         app:layout_constraintTop_toBottomOf="@+id/pass_input"
         app:layout_constraintVertical_bias="0.1" />
 
+    <TextView
+        android:id="@+id/error_text_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_button_login" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

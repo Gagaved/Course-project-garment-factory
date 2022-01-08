@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.Gson
 import com.google.gson.JsonObject
@@ -30,29 +31,47 @@ class LoginActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.login_button_login)
         button.setOnClickListener(loginOnClickListener)
-//        binding.loginButtonLogin.setOnClickListener(loginOnClickListener)
     }
 
     private val loginOnClickListener = View.OnClickListener {
         val login = findViewById<TextInputEditText>(R.id.login_input_login).text.toString()
         val pass = findViewById<TextInputEditText>(R.id.pass_input_login).text.toString()
         val data = LoginRequest(login, pass)
-
-        App.getApi.login(data = data).enqueue(loginCallback)
-    }
-
-    private val loginCallback = object: Callback<LoginResponse> {
-        override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-            // TODO: status 200 - successfully login
-            response.body().let {
-                Log.i("Login 200", it.toString())
+        App.getApi.login(data = data).enqueue(object: Callback<LoginResponse> {
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Log.i("failLogin", t.message.toString())
             }
-        }
 
-        override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-            // TODO: bad login
-            Log.e("failLogin", t.message.toString())
-        }
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                val textError: TextView = findViewById(R.id.error_text_login)
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    body?.let {
+                        Log.i("Login 200", "${it.token_type}_${it.access_token}")
+                        val editor = App.getSharedPref.edit()
+                        editor.putString(
+                            App.APP_PREFERENCES_TOKEN,
+                            "${it.token_type} ${it.access_token}"
+                        )
+                        editor.apply()
+                        textError.text = ""
+                        goToMain()
+                    }
+                } else {
+                    when (response.code()) {
+                        401 -> {
+                            textError.text = "Неправильная связка логин-пароль, проверьте правильность введённых данных"
+                        }
+                        else -> {
+                            textError.text = response.message()
+                        }
+                    }
+                }
+            }
+        })
     }
 
+    private fun goToMain() {
+        //TODO: Сделать переход на главную
+    }
 }
