@@ -3,13 +3,15 @@ package ru.fefu.courseproject_garmentfactory.api
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import com.google.gson.GsonBuilder
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.fefu.courseproject_garmentfactory.api.models.LoginRequest
-import ru.fefu.courseproject_garmentfactory.api.models.LoginRequestSerializer
-import ru.fefu.courseproject_garmentfactory.api.models.LoginResponse
-import ru.fefu.courseproject_garmentfactory.api.models.LoginResponseDeserializer
+import ru.fefu.courseproject_garmentfactory.MainActivity
+import ru.fefu.courseproject_garmentfactory.api.models.*
 
 class App: Application() {
     private lateinit var retrofit: Retrofit
@@ -26,6 +28,7 @@ class App: Application() {
 
         val getApi: Api
             get() = api
+
     }
 
     override fun onCreate() {
@@ -37,6 +40,7 @@ class App: Application() {
         val gson = GsonBuilder()
             .registerTypeAdapter(LoginRequest::class.java, LoginRequestSerializer())
             .registerTypeAdapter(LoginResponse::class.java, LoginResponseDeserializer())
+            .registerTypeAdapter(Profile::class.java, ProfileDeserializer())
             .create()
 
         retrofit = Retrofit.Builder()
@@ -46,5 +50,4 @@ class App: Application() {
 
         api = retrofit.create(Api::class.java)
     }
-
 }
