@@ -49,7 +49,7 @@ class ProductsFragment : Fragment() {
 
     private fun fillDate() {
         for (i in 1..20){
-            items.add(ItemListData((1..100).random(), "SOMETEXT","SOMETEXT"))
+            items.add(ItemListData((1..100).random(), "SOMETEXT",0))
         }
     }
 }

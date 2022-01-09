@@ -48,7 +48,7 @@ class ListRecyclerViewAdapter(private val listItems: List<Any>) : RecyclerView.A
         fun bind(item: ItemListData) {
             id = item.id
             name.text = item.name
-            code.text = item.code
+            code.text = item.code.toString()
         }
     }
 }

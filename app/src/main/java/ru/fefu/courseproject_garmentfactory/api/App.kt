@@ -29,6 +29,15 @@ class App: Application() {
         val getApi: Api
             get() = api
 
+        fun getToken(): String {
+            var token: String? = null
+            if (sharedPref.contains(APP_PREFERENCES_TOKEN)){
+                token = sharedPref.getString(APP_PREFERENCES_TOKEN, "")
+            }
+            token?:let{ token = ""}
+            return token!!
+        }
+
     }
 
     override fun onCreate() {
@@ -41,6 +50,7 @@ class App: Application() {
             .registerTypeAdapter(LoginRequest::class.java, LoginRequestSerializer())
             .registerTypeAdapter(LoginResponse::class.java, LoginResponseDeserializer())
             .registerTypeAdapter(Profile::class.java, ProfileDeserializer())
+            .registerTypeAdapter(Accessories::class.java, AccessoriesDeserializer())
             .create()
 
         retrofit = Retrofit.Builder()
