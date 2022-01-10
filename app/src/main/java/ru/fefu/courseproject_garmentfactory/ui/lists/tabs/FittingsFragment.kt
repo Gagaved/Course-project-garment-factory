@@ -17,13 +17,13 @@ import ru.fefu.courseproject_garmentfactory.api.models.Accessories
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentFittingsBinding
 import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
 import ru.fefu.courseproject_garmentfactory.ui.ItemListData
+import java.io.File
 
 class FittingsFragment : Fragment() {
     private var _binding: FragmentFittingsBinding? = null
     private val binding get() = _binding!!
     private val items = mutableListOf<Accessories>()
     private val adapter = ListRecyclerViewAdapter(items)
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,12 +45,6 @@ class FittingsFragment : Fragment() {
         }
         getFittings()
     }
-
-//    private fun fillDate() {
-//        for (i in 1..20){
-//            items.add(ItemListData((1..100).random(), "SOMETEXT",10))
-//        }
-//    }
 
     private fun getFittings() {
         App.getApi.getAccessoryList(App.getToken()).enqueue(object : Callback<List<Accessories>> {

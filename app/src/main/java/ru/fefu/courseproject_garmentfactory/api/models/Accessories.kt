@@ -11,11 +11,11 @@ data class Accessories(
     val _name: String = "",
     val color: String = "",
     val print: String = "",
-    val image: String = "",
+    val _image: String = "",
     val composition: String = "",
     val width: Int = 0,
     val price: Int = 0
-): ItemListData(id = 0, name = _name, code = article)
+): ItemListData(id = 0, name = _name, code = article, image = _image)
 
 class AccessoriesDeserializer: JsonDeserializer<Accessories> {
     override fun deserialize(

@@ -62,8 +62,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun fillProfile(profile: Profile) {
-        val fullName = view?.findViewById<TextView>(R.id.ProfileFullName)
-        val role = view?.findViewById<TextView>(R.id.ProfileAccountType)
+        val fullName = binding.ProfileFullName
+        val role = binding.ProfileAccountType
         fullName?.text = profile.name
         role?.text = when (profile.role) {
             1 -> "заказчик"

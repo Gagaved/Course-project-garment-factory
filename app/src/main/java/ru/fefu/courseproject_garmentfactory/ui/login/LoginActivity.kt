@@ -21,21 +21,20 @@ import ru.fefu.courseproject_garmentfactory.api.models.LoginRequest
 import ru.fefu.courseproject_garmentfactory.api.models.LoginResponse
 import ru.fefu.courseproject_garmentfactory.api.models.Profile
 import ru.fefu.courseproject_garmentfactory.databinding.ActivityLoginBinding
+import ru.fefu.courseproject_garmentfactory.databinding.FragmentFittingsBinding
 import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityLoginBinding
     private lateinit var spinner: ProgressBar
-
+    private var _binding: ActivityLoginBinding? = null
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        _binding = ActivityLoginBinding.inflate(layoutInflater)
+        spinner = binding.spinnerLogin
 
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        spinner = findViewById(R.id.spinner_login)
-
-        val button = findViewById<Button>(R.id.login_button_login)
+        val button = binding.loginButtonLogin
         button.setOnClickListener(loginOnClickListener)
     }
 
@@ -63,8 +62,8 @@ class LoginActivity : AppCompatActivity() {
 
     private val loginOnClickListener = View.OnClickListener {
         spinner.visibility = View.VISIBLE
-        val login = findViewById<TextInputEditText>(R.id.login_input_login).text.toString()
-        val pass = findViewById<TextInputEditText>(R.id.pass_input_login).text.toString()
+        val login = binding.loginInputLogin.text.toString()
+        val pass = binding.passInputLogin.text.toString()
         val data = LoginRequest(login, pass)
         App.getApi.login(data = data).enqueue(object: Callback<LoginResponse> {
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
@@ -74,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 spinner.visibility = View.INVISIBLE
-                val textError: TextView = findViewById(R.id.error_text_login)
+                val textError: TextView = binding.errorTextLogin
                 if (response.isSuccessful) {
                     val body = response.body()
                     body?.let {
