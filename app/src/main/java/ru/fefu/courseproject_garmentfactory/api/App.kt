@@ -51,6 +51,8 @@ class App: Application() {
             .registerTypeAdapter(LoginResponse::class.java, LoginResponseDeserializer())
             .registerTypeAdapter(Profile::class.java, ProfileDeserializer())
             .registerTypeAdapter(Accessories::class.java, AccessoriesDeserializer())
+            .registerTypeAdapter(AccessoriesPacks::class.java, AccessoriesPacksDeserializer())
+            .registerTypeAdapter(AccessoryDecommission::class.java, AccessoriesPacksDeserializer())
             .create()
 
         retrofit = Retrofit.Builder()

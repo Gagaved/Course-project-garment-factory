@@ -198,14 +198,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textframe">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/my_activity_comment_edit"
+            android:id="@+id/decommission_input"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="количество" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonContinue"
+        android:id="@+id/button_decommission"
         android:layout_width="150dp"
         android:layout_height="65dp"
         android:layout_marginStart="20dp"
