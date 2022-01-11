@@ -104,15 +104,24 @@
         app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
         app:layout_constraintTop_toBottomOf="@id/lengthtext">
     </TextView>
-    <TextView
-        android:id="@+id/count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextInfoStyle"
-        android:text="COUNT"
-        app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/weighttext">
-    </TextView>
+
+        <TextView
+            android:id="@+id/price"
+            style="@style/TextInfoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PRICE"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/weighttext"></TextView>
+
+        <TextView
+            android:id="@+id/count"
+            style="@style/TextInfoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COUNT"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/price"></TextView>
     <TextView
         android:id="@+id/codetext"
         android:layout_width="wrap_content"
@@ -159,15 +168,24 @@
         app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
         app:layout_constraintTop_toBottomOf="@id/lengthtext">
     </TextView>
-    <TextView
-        android:id="@+id/counttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextInfoStyle"
-        android:text="Количество:"
-        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/weighttext">
-    </TextView>
+        <TextView
+            android:id="@+id/pricetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextInfoStyle"
+            android:text="Цена:"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+            app:layout_constraintTop_toBottomOf="@id/weighttext">
+        </TextView>
+
+        <TextView
+            android:id="@+id/counttext"
+            style="@style/TextInfoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Количество:"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+            app:layout_constraintTop_toBottomOf="@id/pricetext"></TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/comment"

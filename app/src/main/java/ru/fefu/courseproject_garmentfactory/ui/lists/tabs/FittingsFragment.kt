@@ -38,9 +38,16 @@ class FittingsFragment : Fragment() {
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         recycleView.adapter = adapter
         adapter.setItemClickListener {
-            /*val bundle = Bundle()
-            bundle.putInt("ActivityID",activities[it].id )
-            arguments = bundle*/
+            val bundle = Bundle()
+            bundle.putInt("article",items[it].article )
+            bundle.putString("name",items[it].name )
+            bundle.putString("image",items[it].image )
+            bundle.putInt("width",items[it].width )
+            bundle.putInt("length",items[it].width )
+            bundle.putInt("weight",items[it].weight )
+            bundle.putInt("price",items[it].price )
+            bundle.putString("type",items[it].type )
+            arguments = bundle
             findNavController().navigate(R.id.action_navigation_lists_to_fittingsInfoFragment,arguments)
         }
         getFittings()

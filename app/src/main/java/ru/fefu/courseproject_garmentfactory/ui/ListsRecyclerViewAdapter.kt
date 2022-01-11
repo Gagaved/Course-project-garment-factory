@@ -1,10 +1,4 @@
 package ru.fefu.courseproject_garmentfactory.ui
-
-import android.annotation.SuppressLint
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.AsyncTask
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,26 +15,6 @@ class ListRecyclerViewAdapter(private val listItems: List<Any>) : RecyclerView.A
     ): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
         return MyViewHolder(view)
-    }
-    @SuppressLint("StaticFieldLeak")
-    @Suppress("DEPRECATION")
-    private inner class SetImageToViewFromURL(var imageView: ImageView) : AsyncTask<String, Void, Bitmap?>() {
-        override fun doInBackground(vararg urls: String): Bitmap? {
-            val imageURL = urls[0]
-            var image: Bitmap? = null
-            try {
-                val `in` = java.net.URL(imageURL).openStream()
-                image = BitmapFactory.decodeStream(`in`)
-            }
-            catch (e: Exception) {
-                Log.e("Error Message", e.message.toString())
-                e.printStackTrace()
-            }
-            return image
-        }
-        override fun onPostExecute(result: Bitmap?) {
-            imageView.setImageBitmap(result)
-        }
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as MyViewHolder).bind(listItems[position] as ItemListData)
@@ -70,6 +44,7 @@ class ListRecyclerViewAdapter(private val listItems: List<Any>) : RecyclerView.A
         fun getId(): Int{
             return id
         }
+
         fun bind(item: ItemListData) {
             id = item.id
             name.text = item.name

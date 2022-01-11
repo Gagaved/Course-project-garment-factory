@@ -26,12 +26,11 @@ import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var spinner: ProgressBar
-    private var _binding: ActivityLoginBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        _binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         spinner = binding.spinnerLogin
 
         val button = binding.loginButtonLogin
