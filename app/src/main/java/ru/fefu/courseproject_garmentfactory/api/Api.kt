@@ -18,9 +18,13 @@ interface Api {
     @GET("api/v1/accessory")
     fun getAccessoryList(@Header("Authorization") token: String): Call<List<Accessories>>
 
-    @GET("api/v1/accessory/{Article}")
-    fun getAccessoryPacks(@Header("Authorization") token: String, @Path("Article") article: Int): Call<List<AccessoriesPacks>>
+    @GET("api/v1/cloth")
+    fun getClothesList(@Header("Authorization") token: String): Call<List<Cloth>>
 
-    @POST("api/v1/accessory/{Article}/{Batch}")
-    fun accessoryDecommission(@Body data: AccessoryDecommission) :Call<AccessoryDecommission>
+    @GET("api/v1/cloth/{number}")
+    fun getClothPacks(@Header("Authorization") token: String, @Path("number") number: Int): Call<List<ClothPack>>
+
+    @GET("api/v1/product")
+    fun getProductList(@Header("Authorization") token: String): Call<List<Product>>
+
 }

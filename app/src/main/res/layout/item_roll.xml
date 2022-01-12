@@ -75,7 +75,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonContinue"
+        android:id="@+id/button"
         android:layout_width="150dp"
         android:layout_height="65dp"
         android:layout_marginStart="20dp"

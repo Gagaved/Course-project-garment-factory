@@ -5,20 +5,20 @@ import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import java.lang.reflect.Type
 
-data class AccessoriesPacks(
-    val batch: Int = 0,
+data class ClothPack(
     val article: Int = 0,
-    var count: Int = 0,
+    val number: String = "",
+    var length: Float = 0F,
 )
 
-class AccessoriesPacksDeserializer: JsonDeserializer<AccessoriesPacks> {
+class ClothPacksDeserializer: JsonDeserializer<ClothPack> {
     override fun deserialize(
         json: JsonElement?,
         typeOfT: Type?,
         context: JsonDeserializationContext?
-    ): AccessoriesPacks = AccessoriesPacks(
-        json?.asJsonObject?.get("batch")?.asInt?:0,
+    ): ClothPack = ClothPack(
         json?.asJsonObject?.get("article")?.asInt?:0,
-        json?.asJsonObject?.get("count")?.asInt?:0,
+        json?.asJsonObject?.get("name")?.asString?:"",
+        json?.asJsonObject?.get("length")?.asFloat?:0F,
     )
 }
