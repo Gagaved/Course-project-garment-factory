@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.fefu.courseproject_garmentfactory.R
+import ru.fefu.courseproject_garmentfactory.api.models.Order
+import java.lang.Error
 
-class OrdersRecyclerViewAdapter(private val listItems: List<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class OrdersRecyclerViewAdapter(private val listItems: List<Order>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var ItemClickListener: (Int) -> Unit = {}
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -18,7 +20,7 @@ class OrdersRecyclerViewAdapter(private val listItems: List<Any>) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as MyViewHolder).bind(listItems[position] as OrderListData)
+        (holder as MyViewHolder).bind(listItems[position] as Order)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -46,11 +48,30 @@ class OrdersRecyclerViewAdapter(private val listItems: List<Any>) : RecyclerView
         fun getId(): Int{
             return id
         }
-        fun bind(item: OrderListData) {
+        fun bind(item: Order) {
             id = item.id
-            code.text = item.code
-            customer.text = item.customer
-            status.text = item.status
+            code.text = item.id.toString()
+            customer.text = item.customer.name
+            status.text = getStageText(item.stage)
+        }
+        private fun getStageText(stage:Int):String{
+            return when (stage) {
+                1 -> {
+                    "Ожидает подтверждения"
+                }
+                2 -> {
+                    "Заказ принят"
+                }
+                3 -> {
+                    "Заказ отклонен"
+                }
+                4 -> {
+                    "Выполнено"
+                }
+                else -> {
+                    "Неизвестно"
+                }
+            }
         }
     }
 }

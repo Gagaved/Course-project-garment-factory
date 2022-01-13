@@ -14,12 +14,13 @@ import retrofit2.Response
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.api.models.Cloth
+import ru.fefu.courseproject_garmentfactory.api.models.Order
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentFittingsBinding
 
 class OrdersFragment : Fragment() {
     private var _binding: FragmentFittingsBinding? = null
     private val binding get() = _binding!!
-    private val orders = mutableListOf<OrderListData>()
+    private val orders = mutableListOf<Order>()
     private val adapter = OrdersRecyclerViewAdapter(orders)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +37,7 @@ class OrdersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //fillDate()
+        getOrders()
         val recycleView = binding.recyclerView
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         recycleView.adapter = adapter
@@ -48,19 +49,19 @@ class OrdersFragment : Fragment() {
         }
 
     }
-    /*private fun getOrders(){
-        App.getApi.getOrdersList(App.getToken()).enqueue(object : Callback<List<Cloth>> {
+    private fun getOrders(){
+        App.getApi.getOrderList(App.getToken()).enqueue(object : Callback<List<Order>> {
             override fun onResponse(
-                call: Call<List<Cloth>>,
-                response: Response<List<Cloth>>
+                call: Call<List<Order>>,
+                response: Response<List<Order>>
             ) {
                 if (response.isSuccessful) {
                     var isNew = false
                     Log.i("success get clothes", response.body().toString())
                     val body = response.body()
                     body?.forEach{
-                        if (!items.contains(it)) {
-                            items.add(it)
+                        if (!orders.contains(it)) {
+                            orders.add(it)
                             isNew = true
                         }
                     }
@@ -74,9 +75,9 @@ class OrdersFragment : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<List<Cloth>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Order>>, t: Throwable) {
                 Log.e("get list accessories", t.message.toString())
             }
         })
-    }*/
+    }
 }
