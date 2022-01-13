@@ -1,13 +1,19 @@
 package ru.fefu.courseproject_garmentfactory.ui.orders
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import ru.fefu.courseproject_garmentfactory.R
+import ru.fefu.courseproject_garmentfactory.api.App
+import ru.fefu.courseproject_garmentfactory.api.models.Cloth
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentFittingsBinding
 
 class OrdersFragment : Fragment() {
@@ -30,7 +36,7 @@ class OrdersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fillDate()
+        //fillDate()
         val recycleView = binding.recyclerView
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         recycleView.adapter = adapter
@@ -42,10 +48,35 @@ class OrdersFragment : Fragment() {
         }
 
     }
+    /*private fun getOrders(){
+        App.getApi.getOrdersList(App.getToken()).enqueue(object : Callback<List<Cloth>> {
+            override fun onResponse(
+                call: Call<List<Cloth>>,
+                response: Response<List<Cloth>>
+            ) {
+                if (response.isSuccessful) {
+                    var isNew = false
+                    Log.i("success get clothes", response.body().toString())
+                    val body = response.body()
+                    body?.forEach{
+                        if (!items.contains(it)) {
+                            items.add(it)
+                            isNew = true
+                        }
+                    }
+                    if (isNew) {
+                        adapter.notifyDataSetChanged()
+                    }
 
-    private fun fillDate() {
-        for (i in 1..20){
-            orders.add(OrderListData((1..100).random(), "CODE","CUSTOMER","STATUS"))
-        }
-    }
+                }
+                else {
+                    Log.e("get list clothes", "not auth")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Cloth>>, t: Throwable) {
+                Log.e("get list accessories", t.message.toString())
+            }
+        })
+    }*/
 }

@@ -18,7 +18,7 @@ import ru.fefu.courseproject_garmentfactory.ui.SetImageToViewFromURL
 class FittingsInfoFragment : Fragment() {
     private var _binding: FragmentFittingsInfoBinding? = null
     private val binding get() = _binding!!
-    //var list = mutableListOf<AccessoriesPacks>()
+    var count: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -30,7 +30,26 @@ class FittingsInfoFragment : Fragment() {
         _binding = FragmentFittingsInfoBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+    private fun getAccessoryCount() {
+        App.getApi.getAccessoryPack(App.getToken(),requireArguments().getInt("article")).enqueue(object : Callback<AccessoryPack> {
+            override fun onResponse(
+                call: Call<AccessoryPack>,
+                response: Response<AccessoryPack>
+            ) {
+                if (response.isSuccessful) {
+                    Log.i("success get clothes", response.body().toString())
+                    count = response.body()!!.count
+                    binding.count.text = count.toString()
+                }
+                else {
+                    Log.e("getaccessorypack", "not auth")
+                }
+            }
+            override fun onFailure(call: Call<AccessoryPack>, t: Throwable) {
+                Log.e("getaccessorypack", t.message.toString())
+            }
+        })
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.toolbar.title = requireArguments().getString("name")
@@ -44,8 +63,32 @@ class FittingsInfoFragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
+        val input = binding.decommissionInput.text
+        getAccessoryCount()
         binding.buttonDecommission.setOnClickListener{
+            App.getApi.accessoryDecommission(App.getToken(), requireArguments().getInt("article"),(input.toString()).toInt()).enqueue(object: Callback<AccessoryDecommissionResponse> {
+                override fun onFailure(call: Call<AccessoryDecommissionResponse>, t: Throwable) {
+                    Log.i("fail clothDecommission", t.message.toString())
+                }
 
+                override fun onResponse(call: Call<AccessoryDecommissionResponse>, response: Response<AccessoryDecommissionResponse>) {
+                    val textError: TextView
+                    if (response.isSuccessful) {
+                        val body = response.body()
+                        getAccessoryCount()
+                        Log.i("succ.AccessoryDecomm.",input.toString())
+                    } else {
+                        when (response.code()) {
+                            401 -> {
+                                //textError.text = "Неправильная связка логин-пароль, проверьте правильность введённых данных"
+                            }
+                            else -> {
+                                //textError.text = response.message()
+                            }
+                        }
+                    }
+                }
+            })
         }
         //setCount()
     }

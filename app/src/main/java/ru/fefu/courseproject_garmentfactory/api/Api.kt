@@ -18,6 +18,13 @@ interface Api {
                           @Path("number") number: Int,
                           @Query("length") length: Float): Call<ClothDecommissionResponse>
 
+    @PATCH("api/v1/accessory/{article}")
+    fun accessoryDecommission(@Header("Authorization") token: String,
+                          @Path("article") article: Int,
+                          @Query("quantity") quantity: Int): Call<AccessoryDecommissionResponse>
+
+    @GET("api/v1/accessory/{article}")
+    fun getAccessoryPack(@Header("Authorization") token: String, @Path("article") article: Int): Call<AccessoryPack>
 
     @GET("api/v1/me")
     fun getProfile(@Header("Authorization") token: String): Call<Profile>
