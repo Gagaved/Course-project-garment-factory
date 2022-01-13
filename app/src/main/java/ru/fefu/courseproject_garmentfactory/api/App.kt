@@ -10,6 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import ru.fefu.courseproject_garmentfactory.MainActivity
 import ru.fefu.courseproject_garmentfactory.api.models.*
 
@@ -50,7 +51,6 @@ class App: Application() {
             .baseUrl("http://sewing.mrfox131.software/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
         api = retrofit.create(Api::class.java)
     }
 }

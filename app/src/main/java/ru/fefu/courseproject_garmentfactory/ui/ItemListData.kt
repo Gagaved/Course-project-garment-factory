@@ -4,5 +4,5 @@ open class ItemListData(
     val name: String,
     val article: Int,
     val image: String,
-    val count: Int = -1
+    var count: Int = -1
     )

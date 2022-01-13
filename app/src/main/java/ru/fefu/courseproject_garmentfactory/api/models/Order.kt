@@ -1,4 +1,10 @@
 package ru.fefu.courseproject_garmentfactory.api.models
+
+import com.google.gson.JsonElement
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.Json
+import com.squareup.moshi.ToJson
+
 data class Order(
     val id: Int,
     val creation_date: String,
@@ -7,5 +13,5 @@ data class Order(
     val manager: User,
     val customer: User,
     val cost: Int,
-    val products: List<Product>,
+    var products: List<Product>,
 )

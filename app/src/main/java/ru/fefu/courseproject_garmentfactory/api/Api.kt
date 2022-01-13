@@ -26,6 +26,14 @@ interface Api {
     @GET("api/v1/order")
     fun getOrderList(@Header("Authorization") token: String): Call<List<Order>>
 
+
+    @GET("api/v1/get_products_by_order_id/{code}")
+    fun getProductByOrder(@Header("Authorization") token: String, @Path("code") id: Int): Call<List<Product>>
+
+    @GET("api/v1/product")
+    fun getProductList(@Header("Authorization") token: String): Call<List<Product>>
+
+
     @GET("api/v1/accessory/{article}")
     fun getAccessoryPack(@Header("Authorization") token: String, @Path("article") article: Int): Call<AccessoryPack>
 
@@ -41,9 +49,6 @@ interface Api {
 
     @GET("api/v1/cloth/{number}")
     fun getClothPacks(@Header("Authorization") token: String, @Path("number") number: Int): Call<List<ClothPack>>
-
-    @GET("api/v1/product")
-    fun getProductList(@Header("Authorization") token: String): Call<List<Product>>
 
     @GET("api/v1/product/{article}/previous")
     fun getPreviousProductList(@Header("Authorization") token: String, @Path("article") article: Int): Call<List<Product>>

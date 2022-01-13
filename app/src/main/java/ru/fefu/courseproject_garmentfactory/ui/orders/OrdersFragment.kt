@@ -17,6 +17,10 @@ import ru.fefu.courseproject_garmentfactory.api.models.Cloth
 import ru.fefu.courseproject_garmentfactory.api.models.Order
 import ru.fefu.courseproject_garmentfactory.api.models.Product
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentFittingsBinding
+import com.google.gson.Gson
+
+
+
 
 class OrdersFragment : Fragment() {
     private var _binding: FragmentFittingsBinding? = null
@@ -64,6 +68,7 @@ class OrdersFragment : Fragment() {
                             isNew = true
                         }
                     }
+
                     if (isNew) {
                         adapter.notifyDataSetChanged()
                     }
