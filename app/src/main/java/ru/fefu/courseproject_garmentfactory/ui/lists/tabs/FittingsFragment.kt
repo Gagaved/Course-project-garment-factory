@@ -16,8 +16,6 @@ import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.api.models.Accessories
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentFittingsBinding
 import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
-import ru.fefu.courseproject_garmentfactory.ui.ItemListData
-import java.io.File
 
 class FittingsFragment : Fragment() {
     private var _binding: FragmentFittingsBinding? = null

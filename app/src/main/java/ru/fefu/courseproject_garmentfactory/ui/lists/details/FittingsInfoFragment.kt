@@ -44,7 +44,9 @@ class FittingsInfoFragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
-        //binding.buttonDecommission.setOnClickListener(decommissionOnClickListener)
+        binding.buttonDecommission.setOnClickListener{
+
+        }
         //setCount()
     }
 }

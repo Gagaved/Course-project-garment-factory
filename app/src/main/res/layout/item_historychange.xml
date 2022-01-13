@@ -42,15 +42,17 @@
             style="@style/TextInfoStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"></TextView>
+
         <TextView
             android:id="@+id/width"
+            style="@style/TextInfoStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="WIDTH"
-            style="@style/TextInfoStyle"
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf= "@id/length">
-        </TextView>
+            app:layout_constraintTop_toBottomOf="@id/length"
+            ></TextView>
+
         <TextView
             android:id="@+id/lengthtext"
             style="@style/TextInfoStyle"
@@ -90,7 +92,7 @@
             style="@style/TextInfoStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Список тканей:"
+            android:text="Фурнитура:"
             app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
             app:layout_constraintTop_toBottomOf="@+id/fablricslist"></TextView>
         <TextView

@@ -46,12 +46,10 @@ class MaterialsInfoFragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
-        val inflater = layoutInflater
-        //val myHeader = inflater.inflate(ru.fefu.courseproject_garmentfactory.R.layout.header_materials_info,binding.listview, false) as ViewGroup
         val newHeader: View = createHeader()
         getClothPacks()
         binding.listview.addHeaderView(newHeader, null, false)
-        binding.listview.adapter = context?.let { ListViewAdapterMaterials(it,rollList) }
+        //binding.listview.adapter = context?.let { ListViewAdapterMaterials(it,rollList) }
     }
     private fun createHeader():View{
         binding.toolbar.title = requireArguments().getString("name")
@@ -83,6 +81,8 @@ class MaterialsInfoFragment : Fragment() {
                         }
                     }
                     if (isNew) {
+
+                        binding.listview.adapter = context?.let { ListViewAdapterMaterials(it,rollList,requireArguments().getInt("article"))}
                     }
 
                 }

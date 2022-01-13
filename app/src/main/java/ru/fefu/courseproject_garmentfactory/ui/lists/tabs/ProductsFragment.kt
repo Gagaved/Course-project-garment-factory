@@ -14,11 +14,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.App
-import ru.fefu.courseproject_garmentfactory.api.models.ClothPack
 import ru.fefu.courseproject_garmentfactory.api.models.Product
 import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentPruductsBinding
-import ru.fefu.courseproject_garmentfactory.ui.ItemListData
 
 class ProductsFragment : Fragment() {
     private var _binding: FragmentPruductsBinding? = null
@@ -51,6 +49,24 @@ class ProductsFragment : Fragment() {
             findNavController().navigate(R.id.action_workoutFragment_to_myActivityDetailsFragment,arguments)
         }*/
         adapter.setItemClickListener {
+            val bundle = Bundle()
+            bundle.putInt("article",items[it].article )
+            bundle.putString("name",items[it].name )
+            bundle.putString("image",items[it].image )
+            var accessoriesList = ""
+            for(i in items[it].accessories){
+                accessoriesList+=i.name+"\n"
+            }
+            var clothList = ""
+            for(i in items[it].clothes){
+                clothList+=i.name+"\n"
+            }
+            bundle.putString("accessories",accessoriesList)
+            bundle.putString("clothes",clothList)
+            bundle.putInt("length",items[it].length)
+            bundle.putInt("width",items[it].width)
+
+            arguments = bundle
             findNavController().navigate(R.id.action_navigation_lists_to_productsInfoFragment,arguments)
         }
     }

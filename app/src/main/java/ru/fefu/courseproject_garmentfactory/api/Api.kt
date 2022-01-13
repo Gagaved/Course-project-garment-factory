@@ -12,6 +12,13 @@ interface Api {
     @POST("api/v1/plane_login")
     fun login(@Body data: LoginRequest): Call<LoginResponse>
 
+    @PATCH("api/v1/cloth/{article}/{number}?")
+    fun clothDecommission(@Header("Authorization") token: String,
+                          @Path("article") article: Int,
+                          @Path("number") number: Int,
+                          @Query("length") length: Float): Call<ClothDecommissionResponse>
+
+
     @GET("api/v1/me")
     fun getProfile(@Header("Authorization") token: String): Call<Profile>
 
@@ -26,5 +33,8 @@ interface Api {
 
     @GET("api/v1/product")
     fun getProductList(@Header("Authorization") token: String): Call<List<Product>>
+
+    @GET("api/v1/product/{article}/previous")
+    fun getPreviousProductList(@Header("Authorization") token: String, @Path("article") article: Int): Call<List<Product>>
 
 }

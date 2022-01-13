@@ -46,19 +46,9 @@ class App: Application() {
         sharedPref = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
 
 
-        val gson = GsonBuilder()
-            .registerTypeAdapter(LoginRequest::class.java, LoginRequestSerializer())
-            .registerTypeAdapter(LoginResponse::class.java, LoginResponseDeserializer())
-            .registerTypeAdapter(Profile::class.java, ProfileDeserializer())
-            .registerTypeAdapter(Accessories::class.java, AccessoriesDeserializer())
-            .registerTypeAdapter(Cloth::class.java, ClothDeserializer())
-            .registerTypeAdapter(ClothPack::class.java, ClothPacksDeserializer())
-            .registerTypeAdapter(Product::class.java, ProductDeserializer())
-            .create()
-
         retrofit = Retrofit.Builder()
             .baseUrl("http://sewing.mrfox131.software/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         api = retrofit.create(Api::class.java)
