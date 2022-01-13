@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="150dp" />
+            app:layout_constraintGuide_begin="99dp" />
         <TextView
             android:id="@+id/code"
             android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
         android:layout_marginTop="25dp"
         android:layout_width="200dp"
         android:layout_height="80dp"
-        android:text="Подтвердить выполнение заказа"
+        android:text="Изменить статус заказа"
         android:textAllCaps="false"
         android:textSize="16sp"
         app:cornerRadius="8dp"
@@ -128,35 +128,32 @@
         <TextView
             android:id="@+id/customerinfo"
             android:layout_width="wrap_content"
-            android:paddingStart="50dp"
             android:layout_height="wrap_content"
             android:text="CUSTOMER INFO"
             android:paddingTop="7dp"
             style="@style/TextInfoStyle"
+            android:paddingStart="50dp"
             app:layout_constraintTop_toBottomOf="@+id/customerinfotext" >
         </TextView>
+
         <TextView
             android:id="@+id/managerphonenumbertext"
-            android:layout_width="wrap_content"
-            android:paddingStart="30dp"
-            android:layout_height="wrap_content"
-            android:text="Телефон менеджера:"
-            android:paddingTop="25dp"
             style="@style/TextInfoStyle"
-            app:layout_constraintTop_toBottomOf="@id/customerinfo">
-        </TextView>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp"
+            android:paddingTop="25dp"
+            android:text="Менеджер:"
+            app:layout_constraintTop_toBottomOf="@id/customerinfo"></TextView>
 
         <TextView
             android:id="@+id/managerphonenumber"
             style="@style/TextInfoStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:paddingTop="25dp"
-            android:text="managerphonenumber"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/managerphonenumbertext"
-            app:layout_constraintStart_toEndOf="@+id/managerphonenumbertext"
-            app:layout_constraintTop_toBottomOf="@+id/customerinfo"></TextView>
+            android:paddingStart="50dp"
+            android:paddingTop="7dp"
+            android:text="MANAGER INFO"
+            app:layout_constraintTop_toBottomOf="@+id/managerphonenumbertext"></TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

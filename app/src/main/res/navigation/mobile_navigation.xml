@@ -24,19 +24,12 @@
     <fragment
         android:id="@+id/navigation_orders"
         android:name="ru.fefu.courseproject_garmentfactory.ui.orders.OrdersFragment"
-        android:label="@string/title_profile"
+        android:label="Заказы"
         tools:layout="@layout/fragment_orders" >
         <action
             android:id="@+id/action_navigation_orders_to_orderDetailsFragment"
             app:destination="@id/orderDetailsFragment" />
-        <action
-            android:id="@+id/action_navigation_orders_to_orderProductInfoFragment"
-            app:destination="@id/orderProductInfoFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/orderProductInfoFragment"
-        android:name="ru.fefu.courseproject_garmentfactory.ui.orders.details.OrderProductInfoFragment"
-        android:label="OrderProductInfoFragment" />
     <fragment
         android:id="@+id/fittingsInfoFragment"
         android:name="ru.fefu.courseproject_garmentfactory.ui.lists.details.FittingsInfoFragment"
@@ -51,7 +44,21 @@
         android:name="ru.fefu.courseproject_garmentfactory.ui.lists.details.ProductsInfoFragment"
         android:label="ProductsInfoFragment" />
     <fragment
+        tools:layout="@layout/fragment_order_deteails"
         android:id="@+id/orderDetailsFragment"
         android:name="ru.fefu.courseproject_garmentfactory.ui.orders.details.OrderDetailsFragment"
-        android:label="OrderDetailsFragment" />
+        android:label="fragment_order_details" >
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_orderProductInfoFragment"
+            app:destination="@id/orderProductInfoFragment" />
+    </fragment>
+   <fragment
+        android:id="@+id/orderProductInfoFragment"
+        android:name="ru.fefu.courseproject_garmentfactory.ui.orders.details.tabs.OrderProductInfoFragment"
+        android:label="OrderProductInfoFragment" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="ru.fefu.courseproject_garmentfactory.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

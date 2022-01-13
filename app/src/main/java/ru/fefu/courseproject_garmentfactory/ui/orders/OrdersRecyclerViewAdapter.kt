@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.models.Order
@@ -54,6 +55,7 @@ class OrdersRecyclerViewAdapter(private val listItems: List<Order>) : RecyclerVi
         private val customer = itemView.findViewById<TextView>(R.id.customer)
         private val code = itemView.findViewById<TextView>(R.id.code)
         private val status = itemView.findViewById<TextView>(R.id.status)
+        private val toolbar =itemView.findViewById<Toolbar>(R.id.toolbar)
 
         init {
             itemView.setOnClickListener {
@@ -65,6 +67,7 @@ class OrdersRecyclerViewAdapter(private val listItems: List<Order>) : RecyclerVi
             return id
         }
         fun bind(item: Order) {
+
             id = item.id
             code.text = item.id.toString()
             customer.text = item.customer.name

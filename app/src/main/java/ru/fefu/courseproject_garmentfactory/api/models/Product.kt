@@ -7,7 +7,7 @@ data class Product(
     val length: Int = 0,
     val comment: String ="",
     val previous: String = "",
-    val clothes: List<Cloth>,
-    val accessories: List<Accessories>,
+    var clothes: List<Cloth>,
+    var accessories: List<Accessories>,
 ): ItemListData(id = 0, name = "", article = 0, image = "",count = 0)
 

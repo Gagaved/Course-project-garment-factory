@@ -23,6 +23,12 @@ interface Api {
                           @Path("article") article: Int,
                           @Query("quantity") quantity: Int): Call<AccessoryDecommissionResponse>
 
+    @PATCH("api/v1/order/{id}")
+    fun changeOrderStatus(@Header("Authorization") token: String,
+                              @Path("id") id: Int,
+                              @Query("status") status: Int): Call<StrResponse>
+
+
     @GET("api/v1/order")
     fun getOrderList(@Header("Authorization") token: String): Call<List<Order>>
 
@@ -33,6 +39,8 @@ interface Api {
     @GET("api/v1/product")
     fun getProductList(@Header("Authorization") token: String): Call<List<Product>>
 
+    @GET("api/v1/product/{article}")
+    fun getProductByArticle(@Header("Authorization") token: String, @Path("article") article: Int): Call<Product>
 
     @GET("api/v1/accessory/{article}")
     fun getAccessoryPack(@Header("Authorization") token: String, @Path("article") article: Int): Call<AccessoryPack>
