@@ -15,12 +15,13 @@ import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.api.models.Cloth
 import ru.fefu.courseproject_garmentfactory.api.models.Order
+import ru.fefu.courseproject_garmentfactory.api.models.Product
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentFittingsBinding
 
 class OrdersFragment : Fragment() {
     private var _binding: FragmentFittingsBinding? = null
     private val binding get() = _binding!!
-    private val orders = mutableListOf<Order>()
+    private var orders = mutableListOf<Order>()
     private val adapter = OrdersRecyclerViewAdapter(orders)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,9 +43,7 @@ class OrdersFragment : Fragment() {
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         recycleView.adapter = adapter
         adapter.setItemClickListener {
-            /*val bundle = Bundle()
-            bundle.putInt("ActivityID",activities[it].id )
-            arguments = bundle*/
+            App.orderCurrentSelected = adapter.getItemById(it) // Макс отказался делать гет запрос на получение заказа по id =)
             findNavController().navigate(R.id.action_navigation_orders_to_orderDetailsFragment,arguments)
         }
 
@@ -57,7 +56,7 @@ class OrdersFragment : Fragment() {
             ) {
                 if (response.isSuccessful) {
                     var isNew = false
-                    Log.i("success get clothes", response.body().toString())
+                    Log.i("success get orders", response.body().toString())
                     val body = response.body()
                     body?.forEach{
                         if (!orders.contains(it)) {
@@ -76,7 +75,7 @@ class OrdersFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<List<Order>>, t: Throwable) {
-                Log.e("get list accessories", t.message.toString())
+                Log.e("get list order", t.message.toString())
             }
         })
     }

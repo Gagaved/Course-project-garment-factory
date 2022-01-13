@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.fefu.courseproject_garmentfactory.R
 
-class ListRecyclerViewAdapter(private val listItems: List<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ListRecyclerViewAdapter(private val listItems: List<ItemListData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var ItemClickListener: (Int) -> Unit = {}
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -35,6 +35,8 @@ class ListRecyclerViewAdapter(private val listItems: List<Any>) : RecyclerView.A
         private val name = itemView.findViewById<TextView>(R.id.name)
         private val code = itemView.findViewById<TextView>(R.id.code)
         private val image: ImageView = itemView.findViewById(R.id.image)
+        private val count= itemView.findViewById<TextView>(R.id.count)
+        private val counttext = itemView.findViewById<TextView>(R.id.counttext)
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
@@ -49,6 +51,11 @@ class ListRecyclerViewAdapter(private val listItems: List<Any>) : RecyclerView.A
             id = item.id
             name.text = item.name
             code.text = item.article.toString()
+            count.text = item.count.toString()
+            if(item.count>0){
+                count.visibility = View.VISIBLE
+                counttext.visibility = View.VISIBLE
+            }
             SetImageToViewFromURL(image).execute("http://sewing.mrfox131.software/" + item.image)
         }
     }

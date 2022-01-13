@@ -9,5 +9,5 @@ data class Product(
     val previous: String = "",
     val clothes: List<Cloth>,
     val accessories: List<Accessories>,
-): ItemListData(id = 0, name = "", article = 0, image = "")
+): ItemListData(id = 0, name = "", article = 0, image = "",count = 0)
 

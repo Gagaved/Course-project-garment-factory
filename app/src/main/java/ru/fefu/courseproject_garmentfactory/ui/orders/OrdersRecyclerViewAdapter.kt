@@ -8,7 +8,19 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.models.Order
 import java.lang.Error
-
+fun getStageText(stage:Int):String{
+    return if (stage == 1){
+        "Ожидает подтверждения"
+    }else if(stage==2){
+        "Заказ принят"
+    }else if(stage==3){
+        "Заказ отклонен"
+    }else if(stage==4){
+        "Выполнено"
+    }else{
+        "Неизвестно"
+    }
+}
 class OrdersRecyclerViewAdapter(private val listItems: List<Order>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var ItemClickListener: (Int) -> Unit = {}
     override fun onCreateViewHolder(
@@ -21,6 +33,10 @@ class OrdersRecyclerViewAdapter(private val listItems: List<Order>) : RecyclerVi
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as MyViewHolder).bind(listItems[position] as Order)
+    }
+
+    fun getItemById(position: Int): Order {
+        return listItems[position]
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -54,24 +70,6 @@ class OrdersRecyclerViewAdapter(private val listItems: List<Order>) : RecyclerVi
             customer.text = item.customer.name
             status.text = getStageText(item.stage)
         }
-        private fun getStageText(stage:Int):String{
-            return when (stage) {
-                1 -> {
-                    "Ожидает подтверждения"
-                }
-                2 -> {
-                    "Заказ принят"
-                }
-                3 -> {
-                    "Заказ отклонен"
-                }
-                4 -> {
-                    "Выполнено"
-                }
-                else -> {
-                    "Неизвестно"
-                }
-            }
-        }
+
     }
 }

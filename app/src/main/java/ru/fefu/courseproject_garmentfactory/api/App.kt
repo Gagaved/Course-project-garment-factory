@@ -20,7 +20,7 @@ class App: Application() {
         var current_role = 0
 
         private lateinit var api: Api
-
+        lateinit var orderCurrentSelected: Order
         private lateinit var sharedPref: SharedPreferences
         private const val APP_PREFERENCES = "storage"
         const val APP_PREFERENCES_TOKEN = "token"
@@ -46,8 +46,6 @@ class App: Application() {
         super.onCreate()
 
         sharedPref = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
-
-
         retrofit = Retrofit.Builder()
             .baseUrl("http://sewing.mrfox131.software/")
             .addConverterFactory(GsonConverterFactory.create())

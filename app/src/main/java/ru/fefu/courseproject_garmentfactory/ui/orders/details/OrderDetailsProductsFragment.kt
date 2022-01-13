@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.fefu.courseproject_garmentfactory.R
+import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentOrderDetailsProductsBinding
 import ru.fefu.courseproject_garmentfactory.ui.ItemListData
 import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
@@ -15,7 +16,7 @@ import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
 class OrderDetailsProductsFragment : Fragment() {
     private var _binding: FragmentOrderDetailsProductsBinding? = null
     private val binding get() = _binding!!
-    private val items = mutableListOf<ItemListData>()
+    private var items = App.orderCurrentSelected.products
     private val adapter = ListRecyclerViewAdapter(items)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +33,6 @@ class OrderDetailsProductsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fillDate()
         val recycleView = binding.recyclerView
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         recycleView.adapter = adapter
@@ -41,12 +41,6 @@ class OrderDetailsProductsFragment : Fragment() {
             bundle.putInt("ActivityID",activities[it].id )
             arguments = bundle*/
             findNavController().navigate(R.id.action_orderDetailsFragment_to_productsInfoFragment,arguments)
-        }
-    }
-
-    private fun fillDate() {
-        for (i in 1..20){
-            items.add(ItemListData((1..100).random(), "SOMETEXT",10,"src"))
         }
     }
 }

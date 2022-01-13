@@ -31,7 +31,7 @@
         android:id="@+id/navigation_orders"
         android:name="ru.fefu.courseproject_garmentfactory.ui.orders.OrdersFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_orders" >
         <action
             android:id="@+id/action_navigation_orders_to_orderDetailsFragment"
             app:destination="@id/orderDetailsFragment" />
