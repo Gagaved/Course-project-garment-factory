@@ -1,4 +1,5 @@
 import android.content.Context
+import android.opengl.Visibility
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -43,30 +44,45 @@ class ListViewAdapterMaterials(private val context: Context,
         length.text = list[position].length.toString()
         val button = itemView.findViewById(R.id.button) as MaterialButton
         val input = itemView.findViewById(R.id.input) as TextInputEditText
-        button.setOnClickListener{
-            App.getApi.clothDecommission(App.getToken(), article, list[position].number,(input.text.toString()+"F").toFloat()).enqueue(object: Callback<ClothDecommissionResponse> {
-                override fun onFailure(call: Call<ClothDecommissionResponse>, t: Throwable) {
-                    Log.i("fail clothDecommission", t.message.toString())
-                }
+        if (App.current_role == 3 || App.current_role == 5) {
+            button.setOnClickListener {
+                App.getApi.clothDecommission(
+                    App.getToken(),
+                    article,
+                    list[position].number,
+                    (input.text.toString() + "F").toFloat()
+                ).enqueue(object : Callback<ClothDecommissionResponse> {
+                    override fun onFailure(call: Call<ClothDecommissionResponse>, t: Throwable) {
+                        Log.i("fail clothDecommission", t.message.toString())
+                    }
 
-                override fun onResponse(call: Call<ClothDecommissionResponse>, response: Response<ClothDecommissionResponse>) {
-                    val textError: TextView
-                    if (response.isSuccessful) {
-                        val body = response.body()
-                        length.text = (length.text.toString().toFloat() - (input.text.toString()+"F").toFloat()).toString()
-                        Log.i("succ. clothDecommission",input.text.toString())
-                    } else {
-                        when (response.code()) {
-                            401 -> {
-                                //textError.text = "Неправильная связка логин-пароль, проверьте правильность введённых данных"
-                            }
-                            else -> {
-                                //textError.text = response.message()
+                    override fun onResponse(
+                        call: Call<ClothDecommissionResponse>,
+                        response: Response<ClothDecommissionResponse>
+                    ) {
+                        val textError: TextView
+                        if (response.isSuccessful) {
+                            val body = response.body()
+                            length.text = (length.text.toString()
+                                .toFloat() - (input.text.toString() + "F").toFloat()).toString()
+                            Log.i("succ. clothDecommission", input.text.toString())
+                        } else {
+                            when (response.code()) {
+                                401 -> {
+                                    //textError.text = "Неправильная связка логин-пароль, проверьте правильность введённых данных"
+                                }
+                                else -> {
+                                    //textError.text = response.message()
+                                }
                             }
                         }
                     }
-                }
-            })
+                })
+            }
+        }
+        else {
+            button.visibility = View.GONE
+            input.visibility = View.GONE
         }
         return itemView
     }
