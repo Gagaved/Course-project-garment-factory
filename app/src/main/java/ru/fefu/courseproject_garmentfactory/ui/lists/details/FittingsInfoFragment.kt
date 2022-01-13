@@ -38,7 +38,7 @@ class FittingsInfoFragment : Fragment() {
             ) {
                 if (response.isSuccessful) {
                     Log.i("success get clothes", response.body().toString())
-                    count = response.body()!!.count
+                    count = response.body()?.count?:0
                     binding.count.text = count.toString()
                 }
                 else {
@@ -65,30 +65,45 @@ class FittingsInfoFragment : Fragment() {
         }
         val input = binding.decommissionInput.text
         getAccessoryCount()
-        binding.buttonDecommission.setOnClickListener{
-            App.getApi.accessoryDecommission(App.getToken(), requireArguments().getInt("article"),(input.toString()).toInt()).enqueue(object: Callback<AccessoryDecommissionResponse> {
-                override fun onFailure(call: Call<AccessoryDecommissionResponse>, t: Throwable) {
-                    Log.i("fail clothDecommission", t.message.toString())
-                }
+        if (App.current_role == 3 || App.current_role == 5) {
+            binding.buttonDecommission.setOnClickListener {
+                App.getApi.accessoryDecommission(
+                    App.getToken(),
+                    requireArguments().getInt("article"),
+                    (input.toString()).toInt()
+                ).enqueue(object : Callback<AccessoryDecommissionResponse> {
+                    override fun onFailure(
+                        call: Call<AccessoryDecommissionResponse>,
+                        t: Throwable
+                    ) {
+                        Log.i("fail clothDecommission", t.message.toString())
+                    }
 
-                override fun onResponse(call: Call<AccessoryDecommissionResponse>, response: Response<AccessoryDecommissionResponse>) {
-                    val textError: TextView
-                    if (response.isSuccessful) {
-                        val body = response.body()
-                        getAccessoryCount()
-                        Log.i("succ.AccessoryDecomm.",input.toString())
-                    } else {
-                        when (response.code()) {
-                            401 -> {
-                                //textError.text = "Неправильная связка логин-пароль, проверьте правильность введённых данных"
-                            }
-                            else -> {
-                                //textError.text = response.message()
+                    override fun onResponse(
+                        call: Call<AccessoryDecommissionResponse>,
+                        response: Response<AccessoryDecommissionResponse>
+                    ) {
+                        val textError: TextView
+                        if (response.isSuccessful) {
+                            val body = response.body()
+                            getAccessoryCount()
+                            Log.i("succ.AccessoryDecomm.", input.toString())
+                        } else {
+                            when (response.code()) {
+                                401 -> {
+                                    //textError.text = "Неправильная связка логин-пароль, проверьте правильность введённых данных"
+                                }
+                                else -> {
+                                    //textError.text = response.message()
+                                }
                             }
                         }
                     }
-                }
-            })
+                })
+            }
+        } else {
+            binding.buttonDecommission.visibility = View.GONE
+            binding.decommissionInput.visibility = View.GONE
         }
         //setCount()
     }
