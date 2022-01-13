@@ -17,6 +17,8 @@ class App: Application() {
     private lateinit var retrofit: Retrofit
 
     companion object {
+        var current_role = 0
+
         private lateinit var api: Api
 
         private lateinit var sharedPref: SharedPreferences

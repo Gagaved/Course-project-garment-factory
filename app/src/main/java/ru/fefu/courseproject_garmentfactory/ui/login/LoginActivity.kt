@@ -27,6 +27,7 @@ import kotlin.math.log
 class LoginActivity : AppCompatActivity() {
     private lateinit var spinner: ProgressBar
     private lateinit var binding: ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -48,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
                 App.getApi.getProfile(it).enqueue(object: Callback<Profile>{
                     override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
                         if (response.isSuccessful) {
+                            App.current_role = response.body()?.role?:-1
                             goToMain()
                         }
                     }
