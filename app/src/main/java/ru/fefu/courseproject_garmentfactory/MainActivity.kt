@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.nostra13.universalimageloader.core.ImageLoader
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
+import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,15 +26,33 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        /*val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_orders, R.id.navigation_lists, R.id.navigation_profile
-            )
-        )*/
-        //setupActionBarWithNavController(navController)
+//        val appBarConfiguration = createAppBarConfiguration()
+//        setupActionBarWithNavController(navController)
         navView.setupWithNavController(navController)
 
+        when (App.current_role) {
+            1 -> {
+                navView.menu.removeItem(R.id.navigation_orders)
+                navView.menu.removeItem(R.id.navigation_lists)
+            }
+            3 -> {navView.menu.removeItem(R.id.navigation_orders)}
+            4 -> {navView.menu.removeItem(R.id.navigation_orders)}
+        }
+    }
+
+    // Passing each menu ID as a set of Ids because each
+    // menu should be considered as top level destinations.
+    private fun createAppBarConfiguration() : AppBarConfiguration{
+        val navSet = mutableSetOf(R.id.navigation_profile, R.id.navigation_lists)
+        when (App.current_role) {
+            2 -> {
+                navSet.add(R.id.navigation_orders)
+            }
+            5 -> {
+                navSet.add(R.id.navigation_orders)
+            }
+            else -> {}
+        }
+        return AppBarConfiguration(navSet)
     }
 }

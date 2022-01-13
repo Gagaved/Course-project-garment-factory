@@ -15,7 +15,7 @@ class ListsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentListsBinding.inflate(inflater, container, false)
 
         //val textView: TextView = binding.textLists
@@ -28,15 +28,17 @@ class ListsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mViewPager = binding.listsViewPager2
-        mViewPager.adapter=(ListsViewPagerAdapter(this))
+        mViewPager.adapter = (ListsViewPagerAdapter(this))
         val tabLayout = binding.listsTabLayout
-        TabLayoutMediator(tabLayout,mViewPager
-
+        TabLayoutMediator(
+            tabLayout,
+            mViewPager
         ) { tab, position ->
             tab.text =
                 ((mViewPager.adapter) as ListsViewPagerAdapter?)!!.mFragmentNames[position]
         }.attach()
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

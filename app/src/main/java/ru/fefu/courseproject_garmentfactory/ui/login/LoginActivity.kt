@@ -85,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
                         )
                         editor.apply()
                         textError.text = ""
-                        goToMain()
+                        checkToken()
                     }
                 } else {
                     when (response.code()) {
