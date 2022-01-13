@@ -27,6 +27,7 @@
         android:background="@drawable/drop_shadow"
         tools:ignore="MissingConstraints">
     </FrameLayout>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/lists_tab_layout"
         android:layout_width="match_parent"

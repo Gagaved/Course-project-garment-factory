@@ -28,7 +28,7 @@ interface Api {
 
 
     @GET("api/v1/get_products_by_order_id/{code}")
-    fun getProductByOrder(@Header("Authorization") token: String, @Path("code") id: Int): Call<List<Product>>
+    fun getProductByOrder(@Header("Authorization") token: String, @Path("code") id: Int): Call<List<ProductCountPair>>
 
     @GET("api/v1/product")
     fun getProductList(@Header("Authorization") token: String): Call<List<Product>>

@@ -6,16 +6,10 @@
     app:startDestination="@+id/navigation_lists">
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="ru.fefu.courseproject_garmentfactory.ui.profile.ProfileFragment"
-        android:label="@string/title_lists"
-        tools:layout="@layout/fragment_lists" />
-
-    <fragment
         android:id="@+id/navigation_lists"
         android:name="ru.fefu.courseproject_garmentfactory.ui.lists.ListsFragment"
         android:label="@string/title_orders"
-        tools:layout="@layout/fragment_orders" >
+        tools:layout="@layout/fragment_lists" >
         <action
             android:id="@+id/action_navigation_lists_to_fittingsInfoFragment"
             app:destination="@id/fittingsInfoFragment" />
@@ -35,7 +29,14 @@
         <action
             android:id="@+id/action_navigation_orders_to_orderDetailsFragment"
             app:destination="@id/orderDetailsFragment" />
+        <action
+            android:id="@+id/action_navigation_orders_to_orderProductInfoFragment"
+            app:destination="@id/orderProductInfoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/orderProductInfoFragment"
+        android:name="ru.fefu.courseproject_garmentfactory.ui.orders.details.OrderProductInfoFragment"
+        android:label="OrderProductInfoFragment" />
     <fragment
         android:id="@+id/fittingsInfoFragment"
         android:name="ru.fefu.courseproject_garmentfactory.ui.lists.details.FittingsInfoFragment"
@@ -52,9 +53,5 @@
     <fragment
         android:id="@+id/orderDetailsFragment"
         android:name="ru.fefu.courseproject_garmentfactory.ui.orders.details.OrderDetailsFragment"
-        android:label="OrderDetailsFragment" >
-        <action
-            android:id="@+id/action_orderDetailsFragment_to_productsInfoFragment"
-            app:destination="@id/productsInfoFragment" />
-    </fragment>
+        android:label="OrderDetailsFragment" />
 </navigation>

@@ -14,6 +14,7 @@ import retrofit2.Response
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.api.models.Product
+import ru.fefu.courseproject_garmentfactory.api.models.ProductCountPair
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentOrderDetailsProductsBinding
 import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
 
@@ -40,26 +41,41 @@ class OrderDetailsProductsFragment : Fragment() {
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         recycleView.adapter = adapter
         adapter.setItemClickListener {
-            /*val bundle = Bundle()
-            bundle.putInt("ActivityID",activities[it].id )
-            arguments = bundle*/
-            findNavController().navigate(R.id.action_orderDetailsFragment_to_productsInfoFragment,arguments)
+            val bundle = Bundle()
+            bundle.putInt("article",items[it].article )
+            bundle.putString("name",items[it].name )
+            bundle.putString("image",items[it].image )
+            var accessoriesList = ""
+            for(i in items[it].accessories){
+                accessoriesList+=i.name+"\n"
+            }
+            var clothList = ""
+            for(i in items[it].clothes){
+                clothList+=i.name+"\n"
+            }
+            bundle.putString("accessories",accessoriesList)
+            bundle.putString("clothes",clothList)
+            bundle.putInt("length",items[it].length)
+            bundle.putInt("width",items[it].width)
+            arguments = bundle
+            findNavController().navigate(R.id.action_navigation_orders_to_orderProductInfoFragment,arguments)
         }
     }
     private fun getProducts() {
-        App.getApi.getProductByOrder(App.getToken(),App.orderCurrentSelected.id).enqueue(object : Callback<List<Product>> {
+        App.getApi.getProductByOrder(App.getToken(),App.orderCurrentSelected.id).enqueue(object : Callback<List<ProductCountPair>> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(
-                call: Call<List<Product>>,
-                response: Response<List<Product>>
+                call: Call<List<ProductCountPair>>,
+                response: Response<List<ProductCountPair>>
             ) {
                 if (response.isSuccessful) {
                     var isNew = false
                     Log.i("success get products", response.body().toString())
                     val body = response.body()
                     body?.forEach{
-                        if (!items.contains(it)) {
-                            items.add(it)
+                        if (!items.contains(it.product)) {
+                            it.product.count = it.count
+                            items.add(it.product)
                             isNew = true
                         }
                     }
@@ -73,7 +89,7 @@ class OrderDetailsProductsFragment : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+            override fun onFailure(call: Call<List<ProductCountPair>>, t: Throwable) {
                 Log.e("get products packs", t.message.toString())
             }
         })
