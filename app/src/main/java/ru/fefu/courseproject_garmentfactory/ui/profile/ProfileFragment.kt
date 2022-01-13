@@ -1,5 +1,6 @@
 package ru.fefu.courseproject_garmentfactory.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,10 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import ru.fefu.courseproject_garmentfactory.MainActivity
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.api.models.Profile
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentProfileBinding
+import ru.fefu.courseproject_garmentfactory.ui.login.LoginActivity
 
 class ProfileFragment : Fragment() {
 
@@ -45,7 +48,7 @@ class ProfileFragment : Fragment() {
         val buttonExit = binding.ProfileButtonExit
         buttonExit.setOnClickListener {
             destroyToken()
-            // TODO go to login screen and ?must destroy all fragments and activities?
+            goToLogin()
         }
         return root
     }
@@ -64,8 +67,8 @@ class ProfileFragment : Fragment() {
     private fun fillProfile(profile: Profile) {
         val fullName = binding.ProfileFullName
         val role = binding.ProfileAccountType
-        fullName?.text = profile.name
-        role?.text = when (profile.role) {
+        fullName.text = profile.name
+        role.text = when (profile.role) {
             1 -> "заказчик"
             2 -> "менеджер"
             3 -> "кладовщик"
@@ -99,5 +102,11 @@ class ProfileFragment : Fragment() {
                 }
             })
         }
+    }
+
+    private fun goToLogin() {
+        val intent = Intent(activity?.baseContext, LoginActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
     }
 }
