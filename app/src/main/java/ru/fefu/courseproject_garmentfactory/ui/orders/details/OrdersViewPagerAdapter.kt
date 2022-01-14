@@ -12,7 +12,7 @@ class OrdersViewPagerAdapter(fragment: OrderDetailsFragment):FragmentStateAdapte
     )
     val mFragmentNames: Array<String> = arrayOf(
         "Информация",
-        "Заказы",
+        "Товары",
     )
     override fun getItemCount(): Int {
         return 2
