@@ -70,7 +70,7 @@ class OrdersRecyclerViewAdapter(private val listItems: List<Order>) : RecyclerVi
 
             id = item.id
             code.text = item.id.toString()
-            customer.text = item.customer.name
+            customer.text = item.customer.name.replace("\n"," ")
             status.text = getStageText(item.stage)
         }
 
