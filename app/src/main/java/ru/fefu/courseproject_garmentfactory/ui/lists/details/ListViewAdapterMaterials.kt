@@ -65,6 +65,7 @@ class ListViewAdapterMaterials(private val context: Context,
                         val textError: TextView
                         if (response.isSuccessful) {
                             val body = response.body()
+                            list[position].length -= (input.text.toString() + "F").toFloat()
                             length.text = (length.text.toString()
                                 .toFloat() - (input.text.toString() + "F").toFloat()).toString()
                             Log.i("succ. clothDecommission", input.text.toString())

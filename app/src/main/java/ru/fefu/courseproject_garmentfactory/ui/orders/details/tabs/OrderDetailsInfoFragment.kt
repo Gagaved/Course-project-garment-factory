@@ -67,6 +67,7 @@ class OrderDetailsInfoFragment : Fragment() {
                             Log.i("success get products", response.body().toString())
                             val body = response.body()
                             binding.status.text = getStageText(id)
+                            App.orderCurrentSelected.stage = id
                         } else {
                             Log.e("change status", "not auth")
                         }
