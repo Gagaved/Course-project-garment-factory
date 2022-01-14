@@ -30,7 +30,7 @@ class ListsViewPagerAdapter(fragment: ListsFragment):FragmentStateAdapter(fragme
         }
         val fragmentsNames = mutableListOf<String>()
         when (App.current_role) {
-            2 -> fragmentsNames.add("Выпускаемая продукция")
+            2 -> fragmentsNames.add("Продукция")
             3 -> {
                 fragmentsNames.add("Материалы")
                 fragmentsNames.add("Фурнитура")
@@ -40,7 +40,7 @@ class ListsViewPagerAdapter(fragment: ListsFragment):FragmentStateAdapter(fragme
                 fragmentsNames.add("Фурнитура")
             }
             5 -> {
-                fragmentsNames.add("Выпускаемая продукция")
+                fragmentsNames.add("Продукция")
                 fragmentsNames.add("Материалы")
                 fragmentsNames.add("Фурнитура")
             }
