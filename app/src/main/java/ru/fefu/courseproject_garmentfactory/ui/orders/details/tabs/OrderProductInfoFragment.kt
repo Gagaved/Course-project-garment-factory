@@ -38,7 +38,11 @@ class OrderProductInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.toolbar.setNavigationOnClickListener{
+            findNavController().popBackStack()
+        }
         getProducts()
+
     }
     override fun onDestroyView() {
         super.onDestroyView()

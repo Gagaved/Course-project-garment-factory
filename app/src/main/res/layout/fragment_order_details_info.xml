@@ -24,7 +24,7 @@
             android:id="@+id/code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CODE"
+            android:text=""
             android:paddingTop="25dp"
             style="@style/TextInfoStyle"
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
@@ -34,7 +34,7 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DATE"
+            android:text=""
             style="@style/TextInfoStyle"
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
             app:layout_constraintTop_toBottomOf="@+id/code" >
@@ -43,7 +43,7 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PRICE"
+            android:text=""
             style="@style/TextInfoStyle"
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
             app:layout_constraintTop_toBottomOf="@+id/date" >
@@ -52,7 +52,7 @@
             android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="STATUS"
+            android:text=""
             style="@style/TextInfoStyle"
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
             app:layout_constraintTop_toBottomOf="@+id/price" >
@@ -129,7 +129,7 @@
             android:id="@+id/customerinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CUSTOMER INFO"
+            android:text=""
             android:paddingTop="7dp"
             style="@style/TextInfoStyle"
             android:paddingStart="50dp"
@@ -153,7 +153,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="50dp"
             android:paddingTop="7dp"
-            android:text="MANAGER INFO"
+            android:text=""
             app:layout_constraintTop_toBottomOf="@+id/managerphonenumbertext"></TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,12 +28,13 @@
             android:paddingTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LENGTH"
+            android:text=""
             style="@style/TextInfoStyle"
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
             app:layout_constraintTop_toBottomOf= "@id/date">
         </TextView>
         <TextView
+            android:visibility="invisible"
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +49,7 @@
             style="@style/TextInfoStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="WIDTH"
+            android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
             app:layout_constraintTop_toBottomOf="@id/length"
             ></TextView>
@@ -84,7 +85,7 @@
             style="@style/TextInfoStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FABRIC 1\nFABRIC 2"
+            android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
             app:layout_constraintTop_toBottomOf="@+id/widthtext"></TextView>
         <TextView
@@ -100,7 +101,7 @@
             style="@style/TextInfoStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FITTING 1\nFITTING 2"
+            android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
             app:layout_constraintTop_toBottomOf="@+id/fablricslist"></TextView>
 

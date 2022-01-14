@@ -31,7 +31,9 @@ class ListViewAdapterMaterials(private val context: Context,
     override fun getItem(position: Int): Any {
         return list[position]
     }
-
+    override fun isEmpty(): Boolean {
+        return false
+    }
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }

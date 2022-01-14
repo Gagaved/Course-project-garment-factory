@@ -48,10 +48,11 @@ class MaterialsInfoFragment : Fragment() {
         }
         val newHeader: View = createHeader()
         getClothPacks()
-        binding.listview.addHeaderView(newHeader, null, false)
+        binding.listview.addHeaderView(newHeader, null, true)
         //binding.listview.adapter = context?.let { ListViewAdapterMaterials(it,rollList) }
     }
     private fun createHeader():View{
+        //if (binding.listview.adapter.isEmpty) binding.listview.adapter.get
         binding.toolbar.title = requireArguments().getString("name")
         var headerBinding: HeaderMaterialsInfoBinding = HeaderMaterialsInfoBinding.inflate(layoutInflater)
         headerBinding.code.text = requireArguments().getInt("article").toString()
@@ -71,21 +72,15 @@ class MaterialsInfoFragment : Fragment() {
                 response: Response<List<ClothPack>>
             ) {
                 if (response.isSuccessful) {
-                    var isNew = false
                     Log.i("success get clothes", response.body().toString())
                     val body = response.body()
                     body?.forEach{
                         if (!rollList.contains(it)) {
                             rollList.add(it)
-                            isNew = true
                         }
                     }
-                    if (isNew) {
-
                         binding.listview.adapter = context?.let { ListViewAdapterMaterials(it,rollList,requireArguments().getInt("article"))}
                     }
-
-                }
                 else {
                     Log.e("get list clothes", "not auth")
                 }

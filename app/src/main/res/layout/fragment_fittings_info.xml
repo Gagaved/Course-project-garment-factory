@@ -62,7 +62,7 @@
         android:id="@+id/code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CODE"
+        android:text=""
         android:paddingTop="25dp"
         style="@style/TextInfoStyle"
         app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TextInfoStyle"
-        android:text="TYPE"
+        android:text=""
         app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
         app:layout_constraintTop_toBottomOf="@id/code">
     </TextView>
@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TextInfoStyle"
-        android:text="WIDTH"
+        android:text=""
         app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
         app:layout_constraintTop_toBottomOf="@id/typetext">
     </TextView>
@@ -91,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TextInfoStyle"
-        android:text="LENGTH"
+        android:text=""
         app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
         app:layout_constraintTop_toBottomOf="@id/widthtext">
     </TextView>
@@ -100,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TextInfoStyle"
-        android:text="WEIDTH"
+        android:text=""
         app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
         app:layout_constraintTop_toBottomOf="@id/lengthtext">
     </TextView>
@@ -110,7 +110,7 @@
             style="@style/TextInfoStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PRICE"
+            android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
             app:layout_constraintTop_toBottomOf="@+id/weighttext"></TextView>
 
@@ -119,7 +119,7 @@
             style="@style/TextInfoStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="COUNT"
+            android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
             app:layout_constraintTop_toBottomOf="@+id/price"></TextView>
     <TextView
@@ -198,6 +198,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textframe">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:inputType="number"
             android:id="@+id/decommission_input"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
