@@ -38,7 +38,7 @@ class FittingsInfoFragment : Fragment() {
             ) {
                 if (response.isSuccessful) {
                     Log.i("success get clothes", response.body().toString())
-                    count = response.body()?.count?:0
+                    count = response.body()?.amount?:0
                     binding.count.text = count.toString()
                 }
                 else {
@@ -57,7 +57,7 @@ class FittingsInfoFragment : Fragment() {
         binding.type.text = requireArguments().getString("type")
         binding.width.text = requireArguments().getInt("width").toString()
         binding.length.text = requireArguments().getInt("length").toString()
-        binding.weight.text = requireArguments().getInt("weight").toString()
+        binding.weight.text = requireArguments().getDouble("weight").toString()
         binding.price.text = requireArguments().getInt("price").toString()
         SetImageToViewFromURL(binding.image).execute("http://sewing.mrfox131.software/"+requireArguments().getString("image"))
         binding.toolbar.setNavigationOnClickListener {

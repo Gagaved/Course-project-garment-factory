@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.lists.details.FittingsInfoFragment"
     >
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -18,203 +19,231 @@
         app:navigationIcon="@drawable/ic_back"
         app:title="Title"
         />
-    <FrameLayout
-        android:id="@+id/imageframe"
+
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        tools:ignore="MissingConstraints"
-        android:background="@color/gray"
-        >
-        <ImageView
-            android:id="@+id/image"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:src="@drawable/default_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            ></ImageView>
-    </FrameLayout>
-    <FrameLayout
-        android:id="@+id/shadowframe"
-        app:layout_constraintTop_toBottomOf="@id/imageframe"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@drawable/drop_shadow"
-        tools:ignore="MissingConstraints">
-    </FrameLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/textframe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/shadowframe"
-        tools:ignore="MissingConstraints"
-        >
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/vertical_guideline"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="150dp" />
-    <TextView
-        android:id="@+id/code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:paddingTop="25dp"
-        style="@style/TextInfoStyle"
-        app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toTopOf="parent">
-    </TextView>
-    <TextView
-        android:id="@+id/type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextInfoStyle"
-        android:text=""
-        app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/code">
-    </TextView>
-    <TextView
-        android:id="@+id/width"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextInfoStyle"
-        android:text=""
-        app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/typetext">
-    </TextView>
-    <TextView
-        android:id="@+id/length"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextInfoStyle"
-        android:text=""
-        app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/widthtext">
-    </TextView>
-    <TextView
-        android:id="@+id/weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextInfoStyle"
-        android:text=""
-        app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/lengthtext">
-    </TextView>
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/price"
-            style="@style/TextInfoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/weighttext"></TextView>
+            <FrameLayout
+                android:id="@+id/imageframe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                tools:ignore="MissingConstraints">
 
-        <TextView
-            android:id="@+id/count"
-            style="@style/TextInfoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/price"></TextView>
-    <TextView
-        android:id="@+id/codetext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Артикул:"
-        android:paddingTop="25dp"
-        style="@style/TextInfoStyle"
-        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toTopOf="parent" >
-    </TextView>
-    <TextView
-        android:id="@+id/typetext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextInfoStyle"
-        android:text="Тип:"
-        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/codetext">
-    </TextView>
-    <TextView
-        android:id="@+id/widthtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextInfoStyle"
-        android:text="Ширина:"
-        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/typetext">
-    </TextView>
-    <TextView
-        android:id="@+id/lengthtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextInfoStyle"
-        android:text="Длина:"
-        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/widthtext">
-    </TextView>
-    <TextView
-        android:id="@+id/weighttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextInfoStyle"
-        android:text="Вес:"
-        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/lengthtext">
-    </TextView>
-        <TextView
-            android:id="@+id/pricetext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextInfoStyle"
-            android:text="Цена:"
-            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@id/weighttext">
-        </TextView>
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:src="@drawable/default_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+            </FrameLayout>
 
-        <TextView
-            android:id="@+id/counttext"
-            style="@style/TextInfoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Количество:"
-            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@id/pricetext"></TextView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/comment"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textframe">
+            <FrameLayout
+                android:id="@+id/shadowframe"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@drawable/drop_shadow"
+                app:layout_constraintTop_toBottomOf="@id/imageframe"
+                tools:ignore="MissingConstraints"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:inputType="number"
-            android:id="@+id/decommission_input"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="количество" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/textframe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/shadowframe"
+                tools:ignore="MissingConstraints">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_decommission"
-        android:layout_width="150dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="СПИСАТЬ"
-        android:textAllCaps="false"
-        android:textSize="16sp"
-        app:cornerRadius="8dp"
-        app:layout_constraintStart_toEndOf="@+id/comment"
-        app:layout_constraintTop_toBottomOf="@id/textframe" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/vertical_guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="150dp" />
+
+                <TextView
+                    android:id="@+id/code"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="25dp"
+                    android:text=""
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/type"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/code"/>
+
+                <TextView
+                    android:id="@+id/width"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/typetext"/>
+
+                <TextView
+                    android:id="@+id/length"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/widthtext"/>
+
+                <TextView
+                    android:id="@+id/weight"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/lengthtext"/>
+
+                <TextView
+                    android:id="@+id/price"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/weighttext"/>
+
+                <TextView
+                    android:id="@+id/count"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/price"/>
+
+                <TextView
+                    android:id="@+id/codetext"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="25dp"
+                    android:text="Артикул:"
+                    app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/typetext"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Тип:"
+                    app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/codetext"/>
+
+                <TextView
+                    android:id="@+id/widthtext"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ширина:"
+                    app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/typetext"/>
+
+                <TextView
+                    android:id="@+id/lengthtext"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Длина:"
+                    app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/widthtext"/>
+
+                <TextView
+                    android:id="@+id/weighttext"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вес:"
+                    app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/lengthtext"/>
+
+                <TextView
+                    android:id="@+id/pricetext"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Цена:"
+                    app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/weighttext"/>
+
+                <TextView
+                    android:id="@+id/counttext"
+                    style="@style/TextInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Количество:"
+                    app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/pricetext"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/comment"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textframe">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/decommission_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="количество"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_decommission"
+                    android:layout_width="150dp"
+                    android:layout_height="65dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="СПИСАТЬ"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    app:cornerRadius="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/comment"
+                    app:layout_constraintTop_toBottomOf="@id/textframe" />
+
+            </LinearLayout>
+
+        <!-- TODO("radio to change units or another view")-->
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

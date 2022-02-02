@@ -42,7 +42,7 @@ class FittingsFragment : Fragment() {
             bundle.putString("image",items[it].image )
             bundle.putInt("width",items[it].width )
             bundle.putInt("length",items[it].width )
-            bundle.putInt("weight",items[it].weight )
+            bundle.putDouble("weight",items[it].weight )
             bundle.putInt("price",items[it].price )
             bundle.putString("type",items[it].type )
             arguments = bundle

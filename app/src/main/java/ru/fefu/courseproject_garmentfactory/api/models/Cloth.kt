@@ -8,5 +8,5 @@ data class Cloth(
     val width: Int = 0,
     val price: Int = 0,
     val color: String = "",
-): ItemListData(id = 0, name = "", article = 0, image = "")
+) : ItemListData(id = 0, name = "", article = 0, image = "")
 
