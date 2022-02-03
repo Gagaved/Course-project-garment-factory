@@ -9,7 +9,6 @@ import ru.fefu.courseproject_garmentfactory.api.models.Product
 
 class ListViewAdapterProducts(private val context: Context,
                               private val list: List<Product>) : BaseAdapter() {
-
     private val inflater: LayoutInflater
             = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 

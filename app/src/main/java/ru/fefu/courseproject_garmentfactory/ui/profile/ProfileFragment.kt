@@ -67,7 +67,7 @@ class ProfileFragment : Fragment() {
     private fun fillProfile(profile: Profile) {
         val fullName = binding.ProfileFullName
         val role = binding.ProfileAccountType
-        fullName.text = profile.name
+        fullName.text = profile.name.replace(' ','\n')
         role.text = when (profile.role) {
             1 -> "заказчик"
             2 -> "менеджер"

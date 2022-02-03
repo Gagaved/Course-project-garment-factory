@@ -14,14 +14,14 @@ import retrofit2.Callback
 import retrofit2.Response
 import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.api.models.Product
-import ru.fefu.courseproject_garmentfactory.databinding.FragmentMaterialsInfoBinding
+import ru.fefu.courseproject_garmentfactory.databinding.FragmentProductsInfoBinding
 import ru.fefu.courseproject_garmentfactory.databinding.HeaderMaterialsInfoBinding
 import ru.fefu.courseproject_garmentfactory.databinding.HeaderProductsInfoBinding
 import ru.fefu.courseproject_garmentfactory.ui.SetImageToViewFromURL
 
 
 class ProductsInfoFragment : Fragment() {
-    private var _binding: FragmentMaterialsInfoBinding? = null
+    private var _binding: FragmentProductsInfoBinding? = null
     private val binding get() = _binding!!
     private val historyChangeList = arrayListOf<Product>()
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,20 +32,26 @@ class ProductsInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMaterialsInfoBinding.inflate(inflater, container, false)
+        _binding = FragmentProductsInfoBinding.inflate(inflater, container, false)
         return binding.root
     }
     private fun createHeader():View{
         binding.toolbar.title = requireArguments().getString("name")
         var headerBinding: HeaderProductsInfoBinding = HeaderProductsInfoBinding.inflate(layoutInflater)
         headerBinding.code.text = requireArguments().getInt("article").toString()
+        headerBinding.price.text = requireArguments().getInt("price").toString()
+        headerBinding.comment.text = requireArguments().getString("comment")
         headerBinding.width.text = requireArguments().getInt("width").toString()
         headerBinding.fittingslist.text = requireArguments().getString("accessories")
+        headerBinding.size.text = requireArguments().getInt("size").toString()
         headerBinding.fablricslist.text = requireArguments().getString("clothes")
         headerBinding.width.text = requireArguments().getInt("width").toString()
         headerBinding.length.text = requireArguments().getInt("length").toString()
         SetImageToViewFromURL(headerBinding.image).execute("http://sewing.mrfox131.software/"+requireArguments().getString("image"))
+        if (historyChangeList.isEmpty()) {
+            headerBinding.changeTitle.text = "Нет истории изменений"
 
+        }
         return headerBinding.root
     }
     private fun getHistoryChange() {
@@ -73,6 +79,7 @@ class ProductsInfoFragment : Fragment() {
                 else {
                     Log.e("getlistprod", "not auth")
                 }
+                binding.listview.addHeaderView(createHeader(), null, false)
             }
 
             override fun onFailure(call: Call<List<Product>>, t: Throwable) {
@@ -87,6 +94,5 @@ class ProductsInfoFragment : Fragment() {
         }
         getHistoryChange()
         binding.listview.adapter = context?.let { ListViewAdapterProducts(it,historyChangeList) }
-        binding.listview.addHeaderView(createHeader(), null, false)
     }
 }

@@ -48,7 +48,7 @@ class App: Application() {
 
         sharedPref = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
         retrofit = Retrofit.Builder()
-            .baseUrl("http://sewing.mrfox131.software/")
+            .baseUrl("https://sewing.mrfox131.software/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         api = retrofit.create(Api::class.java)
