@@ -23,11 +23,17 @@ interface Api {
                           @Path("article") article: Int,
                           @Query("quantity") quantity: Int): Call<AccessoryDecommissionResponse>
 
+    @PATCH("api/v1/accessory_in_kg/{article}")
+    fun accessoryDecommissionInKg(
+        @Header("Authorization") token: String,
+        @Path("article") article: Int,
+        @Query("amount") amount: Double
+    ): Call<AccessoryDecommissionResponse>
+
     @PATCH("api/v1/order/{id}")
     fun changeOrderStatus(@Header("Authorization") token: String,
                               @Path("id") id: Int,
                               @Query("status") status: Int): Call<StrResponse>
-
 
     @GET("api/v1/order")
     fun getOrderList(@Header("Authorization") token: String): Call<List<Order>>

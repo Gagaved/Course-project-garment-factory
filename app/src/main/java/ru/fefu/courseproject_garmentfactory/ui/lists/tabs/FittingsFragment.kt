@@ -45,6 +45,7 @@ class FittingsFragment : Fragment() {
             bundle.putDouble("weight",items[it].weight )
             bundle.putInt("price",items[it].price )
             bundle.putString("type",items[it].type )
+            bundle.putBoolean("kilos",items[it].kg_acceptable)
             arguments = bundle
             findNavController().navigate(R.id.action_navigation_lists_to_fittingsInfoFragment,arguments)
         }

@@ -220,7 +220,7 @@
                         android:id="@+id/decommission_input"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="количество"
+                        android:hint="Сколько?"
                         android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -239,7 +239,29 @@
 
             </LinearLayout>
 
-        <!-- TODO("radio to change units or another view")-->
+                <RadioGroup
+                    android:id="@+id/radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="30dp">
+
+                    <RadioButton
+                        android:id="@+id/kilos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="В килограммах" />
+
+                    <RadioButton
+                        android:id="@+id/pcs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="В штуках"
+                        android:checked="true"
+                        android:layout_marginStart="10dp"/>
+
+                </RadioGroup>
+
 
         </LinearLayout>
 
