@@ -70,19 +70,30 @@ class OrderProductInfoFragment : Fragment() {
             }
             private fun setViewData(){
                 var accessoriesList = ""
-                for(i in product.accessories){
-                    accessoriesList+=i.name+"\n"
+                for(i in product.accessories.indices){
+                    accessoriesList += if(i!=product.accessories.size-1) {
+                        product.accessories[i].name + "\n"
+                    }else{
+                        product.accessories[i].name
+                    }
                 }
                 var clothList = ""
-                for(i in product.clothes){
-                    clothList+=i.name+"\n"
+                for(i in product.clothes.indices){
+                    clothList += if(i!=product.clothes.size-1) {
+                        product.clothes[i].name + "\n"
+                    }else{
+                        product.clothes[i].name
+                    }
                 }
                 binding.toolbar.title = product.name.toString()
                 binding.code.text = product.id.toString()
+                binding.price.text = product.price.toString()
+                binding.comment.text = product.comment.toString()
                 binding.width.text = product.width.toString()
                 binding.fittingslist.text = accessoriesList
                 binding.fablricslist.text = clothList
                 binding.length.text = product.length.toString()
+                binding.size.text = product.size.toString()
                 SetImageToViewFromURL( binding.image).execute("http://sewing.mrfox131.software/"+product.image.toString())
             }
         })

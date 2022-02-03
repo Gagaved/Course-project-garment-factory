@@ -55,16 +55,27 @@ class ProductsFragment : Fragment() {
             bundle.putString("image",items[it].image )
             var accessoriesList = ""
             for(i in items[it].accessories){
-                accessoriesList+=i.name+"\n"
+                accessoriesList += if(it != items.size-1){
+                    i.name
+                }else{
+                    i.name+"\n"
+                }
             }
             var clothList = ""
             for(i in items[it].clothes){
-                clothList+=i.name+"\n"
+                clothList += if(it != items.size-1){
+                    i.name
+                }else{
+                    i.name+"\n"
+                }
             }
+            bundle.putInt("price",items[it].price)
+            bundle.putString("comment",items[it].comment)
             bundle.putString("accessories",accessoriesList)
             bundle.putString("clothes",clothList)
             bundle.putInt("length",items[it].length)
             bundle.putInt("width",items[it].width)
+            bundle.putInt("size",items[it].size)
 
             arguments = bundle
             findNavController().navigate(R.id.action_navigation_lists_to_productsInfoFragment,arguments)
