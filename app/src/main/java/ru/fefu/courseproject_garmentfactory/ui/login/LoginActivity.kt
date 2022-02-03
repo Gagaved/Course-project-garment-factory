@@ -5,24 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
-import com.google.android.material.textfield.TextInputEditText
-import com.google.gson.Gson
-import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import ru.fefu.courseproject_garmentfactory.MainActivity
-import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.api.models.LoginRequest
 import ru.fefu.courseproject_garmentfactory.api.models.LoginResponse
-import ru.fefu.courseproject_garmentfactory.api.models.Profile
 import ru.fefu.courseproject_garmentfactory.databinding.ActivityLoginBinding
-import ru.fefu.courseproject_garmentfactory.databinding.FragmentFittingsBinding
-import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var spinner: ProgressBar
@@ -36,29 +28,6 @@ class LoginActivity : AppCompatActivity() {
 
         val button = binding.loginButtonLogin
         button.setOnClickListener(loginOnClickListener)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        checkToken()
-    }
-
-    private fun checkToken(){
-        if (App.getSharedPref.contains(App.APP_PREFERENCES_TOKEN))
-            App.getSharedPref.getString(App.APP_PREFERENCES_TOKEN, "")?.let {
-                App.getApi.getProfile(it).enqueue(object: Callback<Profile>{
-                    override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
-                        if (response.isSuccessful) {
-                            App.current_role = response.body()?.role?:-1
-                            goToMain()
-                        }
-                    }
-
-                    override fun onFailure(call: Call<Profile>, t: Throwable) {
-                        Log.e("checkToken", t.message.toString())
-                    }
-                })
-            }
     }
 
     private val loginOnClickListener = View.OnClickListener {
@@ -85,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
                         )
                         editor.apply()
                         textError.text = ""
-                        checkToken()
+                        goToMain()
                     }
                 } else {
                     when (response.code()) {

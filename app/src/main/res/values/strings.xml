@@ -96,5 +96,7 @@
     <string name="login_input_login">Логин</string>
     <string name="password_input_login">Пароль</string>
     <string name="login_button_login">Войти</string>
-    <string name="ProfileExit">выйти</string>
+    <string name="profile_exit">выйти</string>
+    <string name="repeat_button_started">Повторить попытку</string>
+    <string name="welcome_text">Хорошего дня</string>
 </resources>
