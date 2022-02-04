@@ -50,7 +50,7 @@ class MaterialsFragment : Fragment() {
             bundle.putString("image",items[it].image )
             bundle.putString("print",items[it].print )
             bundle.putString("composition",items[it].composition )
-            bundle.putInt("width",items[it].width )
+            bundle.putDouble("width",items[it].width )
             bundle.putInt("price",items[it].price )
             bundle.putString("color",items[it].color )
             arguments = bundle

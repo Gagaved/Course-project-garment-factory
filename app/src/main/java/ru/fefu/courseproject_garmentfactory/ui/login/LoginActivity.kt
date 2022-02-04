@@ -14,6 +14,7 @@ import ru.fefu.courseproject_garmentfactory.MainActivity
 import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.api.models.LoginRequest
 import ru.fefu.courseproject_garmentfactory.api.models.LoginResponse
+import ru.fefu.courseproject_garmentfactory.api.models.Profile
 import ru.fefu.courseproject_garmentfactory.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -29,7 +30,22 @@ class LoginActivity : AppCompatActivity() {
         val button = binding.loginButtonLogin
         button.setOnClickListener(loginOnClickListener)
     }
+    private fun checkToken(){
+        if (App.getSharedPref.contains(App.APP_PREFERENCES_TOKEN))
+            App.getSharedPref.getString(App.APP_PREFERENCES_TOKEN, "")?.let {
+                App.getApi.getProfile(it).enqueue(object: Callback<Profile>{
+                    override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
+                        if (response.isSuccessful) {
+                            App.current_role = response.body()?.role?:-1
+                        }
+                    }
 
+                    override fun onFailure(call: Call<Profile>, t: Throwable) {
+                        Log.e("checkToken", t.message.toString())
+                    }
+                })
+            }
+    }
     private val loginOnClickListener = View.OnClickListener {
         spinner.visibility = View.VISIBLE
         val login = binding.loginInputLogin.text.toString()
@@ -54,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
                         )
                         editor.apply()
                         textError.text = ""
+                        checkToken()
                         goToMain()
                     }
                 } else {

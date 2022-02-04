@@ -56,7 +56,7 @@ class MaterialsInfoFragment : Fragment() {
         binding.toolbar.title = requireArguments().getString("name")
         var headerBinding: HeaderMaterialsInfoBinding = HeaderMaterialsInfoBinding.inflate(layoutInflater)
         headerBinding.code.text = requireArguments().getInt("article").toString()
-        headerBinding.width.text = requireArguments().getInt("width").toString()
+        headerBinding.width.text = requireArguments().getDouble("width").toString()
         headerBinding.print.text = requireArguments().getString("print")
         headerBinding.comp.text = requireArguments().getString("composition")
         headerBinding.price.text = requireArguments().getInt("price").toString()

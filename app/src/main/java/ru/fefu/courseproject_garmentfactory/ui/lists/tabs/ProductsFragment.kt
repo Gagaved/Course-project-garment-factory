@@ -16,10 +16,10 @@ import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.api.models.Product
 import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
-import ru.fefu.courseproject_garmentfactory.databinding.FragmentPruductsBinding
+import ru.fefu.courseproject_garmentfactory.databinding.FragmentProductsBinding
 
 class ProductsFragment : Fragment() {
-    private var _binding: FragmentPruductsBinding? = null
+    private var _binding: FragmentProductsBinding? = null
     private val binding get() = _binding!!
     private val items = mutableListOf<Product>()
     private val adapter = ListRecyclerViewAdapter(items)
@@ -32,7 +32,7 @@ class ProductsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPruductsBinding.inflate(inflater, container, false)
+        _binding = FragmentProductsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
