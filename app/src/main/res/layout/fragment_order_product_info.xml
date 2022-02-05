@@ -131,6 +131,15 @@
             android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
             app:layout_constraintTop_toBottomOf="@+id/pricetext" />
+        <TextView
+            android:id="@+id/comment"
+            style="@style/TextInfoStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/fittingslist" />
 
         <TextView
             android:id="@+id/widthtext"

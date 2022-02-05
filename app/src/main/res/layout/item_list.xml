@@ -27,7 +27,10 @@
             app:layout_constraintGuide_percent="0.50" />
 
         <ImageView
+            android:foregroundGravity="center"
             android:id="@+id/image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="fitXY"
@@ -46,13 +49,15 @@
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
             android:paddingTop="15dp"
+            android:paddingBottom="5dp"
             android:text="Name"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="@id/vertical_guideline"
             card_view:layout_constraintTop_toTopOf="parent" />
 
@@ -64,8 +69,9 @@
             android:text="Артикул:"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/name"
             card_view:layout_constraintEnd_toEndOf="@id/vertical_guideline"
-            card_view:layout_constraintTop_toBottomOf="@id/nametext" />
+         />
 
         <TextView
             android:id="@+id/counttext"
@@ -82,8 +88,7 @@
 
         <TextView
             android:id="@+id/count"
-
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
             android:paddingTop="5dp"
@@ -91,18 +96,21 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             card_view:layout_constraintStart_toEndOf="@id/vertical_guideline"
             card_view:layout_constraintTop_toBottomOf="@+id/code" />
 
         <TextView
             android:id="@+id/code"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
-            android:paddingTop="5dp"
+            android:paddingTop="7dp"
             android:text="ARTICLE"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@id/vertical_guideline"
             card_view:layout_constraintTop_toBottomOf="@+id/name" />
 
