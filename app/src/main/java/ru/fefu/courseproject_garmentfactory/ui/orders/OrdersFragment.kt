@@ -63,7 +63,14 @@ class OrdersFragment : Fragment() {
                     Log.i("success get orders", response.body().toString())
                     val body = response.body()
                     body?.forEach{
-                        if (!orders.contains(it)) {
+                        var flag = true
+                        for(i in orders){
+                            if(it.id == i.id){
+                                flag = false
+                                break
+                            }
+                        }
+                        if(flag){
                             orders.add(it)
                             isNew = true
                         }

@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_orderDetailsFragment_to_orderProductInfoFragment"
             app:destination="@id/orderProductInfoFragment" />
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_clothMapFragment"
+            app:destination="@id/clothMapFragment" />
     </fragment>
    <fragment
         android:id="@+id/orderProductInfoFragment"
@@ -61,4 +64,8 @@
         android:name="ru.fefu.courseproject_garmentfactory.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/clothMapFragment"
+        android:name="ru.fefu.courseproject_garmentfactory.ui.orders.details.tabs.ClothMapFragment"
+        android:label="ClothMapFragment" />
 </navigation>

@@ -38,6 +38,9 @@ interface Api {
     @GET("api/v1/order")
     fun getOrderList(@Header("Authorization") token: String): Call<List<Order>>
 
+    @GET("api/v1/get_cloth_mappings/{order_id}")
+    fun getClothMappings(@Header("Authorization") token: String,
+                         @Path("order_id") order_id: Int): Call<List<Mapping>>
 
     @GET("api/v1/get_products_by_order_id/{code}")
     fun getProductByOrder(@Header("Authorization") token: String, @Path("code") id: Int): Call<List<ProductCountPair>>
