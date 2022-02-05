@@ -1,20 +1,21 @@
 package ru.fefu.courseproject_garmentfactory.ui.orders.details.tabs
+
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ru.fefu.courseproject_garmentfactory.api.App
-import ru.fefu.courseproject_garmentfactory.databinding.FragmentOrderDetailsMappingsBinding
-import android.util.Log
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import ru.fefu.courseproject_garmentfactory.R
+import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.api.models.Mapping
+import ru.fefu.courseproject_garmentfactory.databinding.FragmentOrderDetailsMappingsBinding
 
 
 class OrderDetailsMappingsFragment : Fragment() {
@@ -22,13 +23,11 @@ class OrderDetailsMappingsFragment : Fragment() {
     private val binding get() = _binding!!
     private var items = arrayListOf<Mapping>()
     private val adapter = MappingListRecyclerAdapter(items)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentOrderDetailsMappingsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,12 +40,16 @@ class OrderDetailsMappingsFragment : Fragment() {
         recycleView.adapter = adapter
         adapter.setItemClickListener {
             val bundle = Bundle()
-            bundle.putString("name",items[it].article.toString() )
-            bundle.putString("image",items[it].map)
+            bundle.putString("name", items[it].article.toString())
+            bundle.putString("image", items[it].map)
             arguments = bundle
-            findNavController().navigate(R.id.action_orderDetailsFragment_to_clothMapFragment,arguments)//todo навигация
+            findNavController().navigate(
+                R.id.action_orderDetailsFragment_to_clothMapFragment,
+                arguments
+            )
         }
     }
+
     private fun getMapping() {
         App.getApi.getClothMappings(App.getToken(), App.orderCurrentSelected.id)
             .enqueue(object : Callback<List<Mapping>> {
@@ -61,12 +64,12 @@ class OrderDetailsMappingsFragment : Fragment() {
                         val body = response.body()
                         body?.forEach {
                             var flag = false
-                            for(i in items){
-                                if (it.article == i.article && it.batch_number == i.batch_number){
+                            for (i in items) {
+                                if (it.article == i.article && it.batch_number == i.batch_number) {
                                     flag = true
                                 }
                             }
-                            if(!flag){
+                            if (!flag) {
                                 items.add(it)
                                 isNew = true
 

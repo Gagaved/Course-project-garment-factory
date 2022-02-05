@@ -16,13 +16,13 @@ class SetImageToViewFromURL(var imageView: ImageView) : AsyncTask<String, Void, 
         try {
             val `in` = java.net.URL(imageURL).openStream()
             image = BitmapFactory.decodeStream(`in`)
-        }
-        catch (e: Exception) {
+        } catch (e: Exception) {
             Log.e("Error Message", e.message.toString())
             e.printStackTrace()
         }
         return image
     }
+
     override fun onPostExecute(result: Bitmap?) {
         imageView.setImageBitmap(result)
     }

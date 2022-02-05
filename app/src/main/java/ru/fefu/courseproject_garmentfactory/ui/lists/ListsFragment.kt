@@ -17,11 +17,6 @@ class ListsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentListsBinding.inflate(inflater, container, false)
-
-        //val textView: TextView = binding.textLists
-        /*listsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })*/
         return binding.root
     }
 

@@ -3,10 +3,10 @@ package ru.fefu.courseproject_garmentfactory.ui.lists.tabs
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import retrofit2.Call
@@ -15,8 +15,8 @@ import retrofit2.Response
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.App
 import ru.fefu.courseproject_garmentfactory.api.models.Product
-import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentProductsBinding
+import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
 
 class ProductsFragment : Fragment() {
     private var _binding: FragmentProductsBinding? = null
@@ -31,7 +31,7 @@ class ProductsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentProductsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -42,43 +42,40 @@ class ProductsFragment : Fragment() {
         val recycleView = binding.recyclerView
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         recycleView.adapter = adapter
-        /*adapter.setItemClickListener {
-            val bundle = Bundle()
-            bundle.putInt("ActivityID",activities[it].id )
-            arguments = bundle
-            findNavController().navigate(R.id.action_workoutFragment_to_myActivityDetailsFragment,arguments)
-        }*/
         adapter.setItemClickListener {
             val bundle = Bundle()
-            bundle.putInt("article",items[it].article )
-            bundle.putString("name",items[it].name )
-            bundle.putString("image",items[it].image )
+            bundle.putInt("article", items[it].article)
+            bundle.putString("name", items[it].name)
+            bundle.putString("image", items[it].image)
             var accessoriesList = ""
-            for(i in items[it].accessories){
-                accessoriesList += if(it != items.size-1){
+            for (i in items[it].accessories) {
+                accessoriesList += if (it != items.size - 1) {
                     i.name
-                }else{
-                    i.name+"\n"
+                } else {
+                    i.name + "\n"
                 }
             }
             var clothList = ""
-            for(i in items[it].clothes){
-                clothList += if(it != items.size-1){
+            for (i in items[it].clothes) {
+                clothList += if (it != items.size - 1) {
                     i.name
-                }else{
-                    i.name+"\n"
+                } else {
+                    i.name + "\n"
                 }
             }
-            bundle.putInt("price",items[it].price)
-            bundle.putString("comment",items[it].comment)
-            bundle.putString("accessories",accessoriesList)
-            bundle.putString("clothes",clothList)
-            bundle.putInt("length",items[it].length)
-            bundle.putInt("width",items[it].width)
-            bundle.putInt("size",items[it].size)
+            bundle.putInt("price", items[it].price)
+            bundle.putString("comment", items[it].comment)
+            bundle.putString("accessories", accessoriesList)
+            bundle.putString("clothes", clothList)
+            bundle.putInt("length", items[it].length)
+            bundle.putInt("width", items[it].width)
+            bundle.putInt("size", items[it].size)
 
             arguments = bundle
-            findNavController().navigate(R.id.action_navigation_lists_to_productsInfoFragment,arguments)
+            findNavController().navigate(
+                R.id.action_navigation_lists_to_productsInfoFragment,
+                arguments
+            )
         }
     }
 
@@ -94,7 +91,7 @@ class ProductsFragment : Fragment() {
                     var isNew = false
                     Log.i("success get products", response.body().toString())
                     val body = response.body()
-                    body?.forEach{
+                    body?.forEach {
                         if (!items.contains(it)) {
                             items.add(it)
                             isNew = true
@@ -103,9 +100,7 @@ class ProductsFragment : Fragment() {
                     if (isNew) {
                         adapter.notifyDataSetChanged()
                     }
-
-                }
-                else {
+                } else {
                     Log.e("getlistprod", "not auth")
                 }
             }

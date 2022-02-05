@@ -3,18 +3,11 @@ package ru.fefu.courseproject_garmentfactory.api
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
-import com.google.gson.GsonBuilder
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
-import ru.fefu.courseproject_garmentfactory.MainActivity
-import ru.fefu.courseproject_garmentfactory.api.models.*
+import ru.fefu.courseproject_garmentfactory.api.models.Order
 
-class App: Application() {
+class App : Application() {
     private lateinit var retrofit: Retrofit
 
     companion object {
@@ -34,10 +27,10 @@ class App: Application() {
 
         fun getToken(): String {
             var token: String? = null
-            if (sharedPref.contains(APP_PREFERENCES_TOKEN)){
+            if (sharedPref.contains(APP_PREFERENCES_TOKEN)) {
                 token = sharedPref.getString(APP_PREFERENCES_TOKEN, "")
             }
-            token?:let{ token = ""}
+            token ?: let { token = "" }
             return token!!
         }
 

@@ -2,10 +2,10 @@ package ru.fefu.courseproject_garmentfactory.ui.lists.tabs
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import retrofit2.Call
@@ -13,11 +13,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.App
-import ru.fefu.courseproject_garmentfactory.api.models.Accessories
 import ru.fefu.courseproject_garmentfactory.api.models.Cloth
-import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentMaterialsBinding
-import ru.fefu.courseproject_garmentfactory.ui.ItemListData
+import ru.fefu.courseproject_garmentfactory.ui.ListRecyclerViewAdapter
 
 class MaterialsFragment : Fragment() {
     private var _binding: FragmentMaterialsBinding? = null
@@ -25,14 +23,10 @@ class MaterialsFragment : Fragment() {
     private val items = mutableListOf<Cloth>()
     private val adapter = ListRecyclerViewAdapter(items)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMaterialsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -45,16 +39,19 @@ class MaterialsFragment : Fragment() {
         recycleView.adapter = adapter
         adapter.setItemClickListener {
             val bundle = Bundle()
-            bundle.putInt("article",items[it].article )
-            bundle.putString("name",items[it].name )
-            bundle.putString("image",items[it].image )
-            bundle.putString("print",items[it].print )
-            bundle.putString("composition",items[it].composition )
-            bundle.putDouble("width",items[it].width )
-            bundle.putInt("price",items[it].price )
-            bundle.putString("color",items[it].color )
+            bundle.putInt("article", items[it].article)
+            bundle.putString("name", items[it].name)
+            bundle.putString("image", items[it].image)
+            bundle.putString("print", items[it].print)
+            bundle.putString("composition", items[it].composition)
+            bundle.putDouble("width", items[it].width)
+            bundle.putInt("price", items[it].price)
+            bundle.putString("color", items[it].color)
             arguments = bundle
-            findNavController().navigate(R.id.action_navigation_lists_to_materialsInfoFragment,arguments)
+            findNavController().navigate(
+                R.id.action_navigation_lists_to_materialsInfoFragment,
+                arguments
+            )
         }
     }
 
@@ -68,7 +65,7 @@ class MaterialsFragment : Fragment() {
                     var isNew = false
                     Log.i("success get clothes", response.body().toString())
                     val body = response.body()
-                    body?.forEach{
+                    body?.forEach {
                         if (!items.contains(it)) {
                             items.add(it)
                             isNew = true
@@ -78,8 +75,7 @@ class MaterialsFragment : Fragment() {
                         adapter.notifyDataSetChanged()
                     }
 
-                }
-                else {
+                } else {
                     Log.e("get list clothes", "not auth")
                 }
             }

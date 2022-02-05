@@ -1,11 +1,12 @@
 package ru.fefu.courseproject_garmentfactory.ui.orders
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import retrofit2.Call
@@ -13,14 +14,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.App
-import ru.fefu.courseproject_garmentfactory.api.models.Cloth
 import ru.fefu.courseproject_garmentfactory.api.models.Order
-import ru.fefu.courseproject_garmentfactory.api.models.Product
 import ru.fefu.courseproject_garmentfactory.databinding.FragmentFittingsBinding
-import com.google.gson.Gson
-
-
-
 
 class OrdersFragment : Fragment() {
     private var _binding: FragmentFittingsBinding? = null
@@ -28,14 +23,10 @@ class OrdersFragment : Fragment() {
     private var orders = mutableListOf<Order>()
     private val adapter = OrdersRecyclerViewAdapter(orders)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFittingsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -47,13 +38,17 @@ class OrdersFragment : Fragment() {
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         recycleView.adapter = adapter
         adapter.setItemClickListener {
-            App.orderCurrentSelected = adapter.getItemById(it) // Макс отказался делать гет запрос на получение заказа по id =)
-            findNavController().navigate(R.id.action_navigation_orders_to_orderDetailsFragment,arguments)
+            App.orderCurrentSelected = adapter.getItemById(it)
+            findNavController().navigate(
+                R.id.action_navigation_orders_to_orderDetailsFragment,
+                arguments
+            )
         }
-
     }
-    private fun getOrders(){
+
+    private fun getOrders() {
         App.getApi.getOrderList(App.getToken()).enqueue(object : Callback<List<Order>> {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(
                 call: Call<List<Order>>,
                 response: Response<List<Order>>
@@ -62,15 +57,15 @@ class OrdersFragment : Fragment() {
                     var isNew = false
                     Log.i("success get orders", response.body().toString())
                     val body = response.body()
-                    body?.forEach{
+                    body?.forEach {
                         var flag = true
-                        for(i in orders){
-                            if(it.id == i.id){
+                        for (i in orders) {
+                            if (it.id == i.id) {
                                 flag = false
                                 break
                             }
                         }
-                        if(flag){
+                        if (flag) {
                             orders.add(it)
                             isNew = true
                         }
@@ -80,8 +75,7 @@ class OrdersFragment : Fragment() {
                         adapter.notifyDataSetChanged()
                     }
 
-                }
-                else {
+                } else {
                     Log.e("get list clothes", "not auth")
                 }
             }

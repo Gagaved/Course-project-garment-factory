@@ -14,10 +14,10 @@
     android:shadowDy="60"
     android:shadowRadius="1000000000000"
     android:focusable="true">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/vertical_guideline"
@@ -48,6 +48,7 @@
             android:textSize="16sp"
             card_view:layout_constraintEnd_toEndOf="@id/vertical_guideline"
             card_view:layout_constraintTop_toBottomOf="@+id/codetext" />
+
         <TextView
             android:id="@+id/statustext"
             android:paddingBottom="10dp"
@@ -71,6 +72,7 @@
             android:textSize="16sp"
             card_view:layout_constraintStart_toEndOf="@id/vertical_guideline"
             card_view:layout_constraintTop_toBottomOf="@+id/code" />
+
         <TextView
             android:id="@+id/status"
             android:layout_width="wrap_content"
@@ -83,6 +85,7 @@
             android:textSize="16sp"
             card_view:layout_constraintStart_toEndOf="@id/vertical_guideline"
             card_view:layout_constraintTop_toBottomOf="@+id/customer" />
+
         <TextView
             android:paddingTop="10dp"
             android:id="@+id/code"

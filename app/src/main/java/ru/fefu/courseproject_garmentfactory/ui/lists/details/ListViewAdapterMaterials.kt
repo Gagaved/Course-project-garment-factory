@@ -1,5 +1,4 @@
 import android.content.Context
-import android.opengl.Visibility
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,32 +7,34 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
-import com.google.gson.JsonElement
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import ru.fefu.courseproject_garmentfactory.R
 import ru.fefu.courseproject_garmentfactory.api.App
-import ru.fefu.courseproject_garmentfactory.api.models.*
-import ru.fefu.courseproject_garmentfactory.databinding.ActivityLoginBinding
+import ru.fefu.courseproject_garmentfactory.api.models.ClothDecommissionResponse
+import ru.fefu.courseproject_garmentfactory.api.models.ClothPack
 
-class ListViewAdapterMaterials(private val context: Context,
-                               private val list: List<ClothPack>,
-                               private val article: Int) : BaseAdapter() {
-    private val inflater: LayoutInflater
-            = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+class ListViewAdapterMaterials(
+    context: Context,
+    private val list: List<ClothPack>,
+    private val article: Int
+) : BaseAdapter() {
+    private val inflater: LayoutInflater =
+        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
-        val json: JsonElement
         return list.size
     }
 
     override fun getItem(position: Int): Any {
         return list[position]
     }
+
     override fun isEmpty(): Boolean {
         return false
     }
+
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
@@ -48,14 +49,17 @@ class ListViewAdapterMaterials(private val context: Context,
         val input = itemView.findViewById(R.id.input) as TextInputEditText
         if (App.current_role == 3 || App.current_role == 5) {
             button.setOnClickListener {
-                if (input.text.toString().isNotEmpty()){
+                if (input.text.toString().isNotEmpty()) {
                     App.getApi.clothDecommission(
                         App.getToken(),
                         article,
                         list[position].number,
                         (input.text.toString() + "F").toFloat()
                     ).enqueue(object : Callback<ClothDecommissionResponse> {
-                        override fun onFailure(call: Call<ClothDecommissionResponse>, t: Throwable) {
+                        override fun onFailure(
+                            call: Call<ClothDecommissionResponse>,
+                            t: Throwable
+                        ) {
                             Log.i("fail clothDecommission", t.message.toString())
                         }
 
@@ -82,8 +86,7 @@ class ListViewAdapterMaterials(private val context: Context,
                     })
                 }
             }
-        }
-        else {
+        } else {
             button.visibility = View.GONE
             input.visibility = View.GONE
         }

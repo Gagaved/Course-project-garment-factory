@@ -1,26 +1,25 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    >
-<FrameLayout
-    android:id="@+id/imageframe"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:ignore="MissingConstraints"
-    android:background="@color/gray">
-    <ImageView
-        android:id="@+id/image"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:id="@+id/imageframe"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:src="@drawable/default_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        ></ImageView>
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/default_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/textframe"
@@ -47,7 +46,7 @@
             android:paddingTop="25dp"
             android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/length"
@@ -56,7 +55,7 @@
             android:layout_height="wrap_content"
             android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@id/size"></TextView>
+            app:layout_constraintTop_toBottomOf="@id/size" />
 
         <TextView
             android:id="@+id/width"
@@ -65,7 +64,7 @@
             android:layout_height="wrap_content"
             android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@id/length"></TextView>
+            app:layout_constraintTop_toBottomOf="@id/length" />
 
         <TextView
             android:id="@+id/codetext"
@@ -75,7 +74,7 @@
             android:paddingTop="25dp"
             android:text="Артикул:"
             app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/lengthtext"
@@ -84,7 +83,7 @@
             android:layout_height="wrap_content"
             android:text="Длина:"
             app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/size"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/size" />
 
         <TextView
             android:id="@+id/pricetext"
@@ -93,7 +92,7 @@
             android:layout_height="wrap_content"
             android:text="Цена:"
             app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/codetext"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/codetext" />
 
         <TextView
             android:id="@+id/price"
@@ -102,7 +101,7 @@
             android:layout_height="wrap_content"
             android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/codetext"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/codetext" />
 
         <TextView
             android:id="@+id/sizetext"
@@ -111,7 +110,7 @@
             android:layout_height="wrap_content"
             android:text="Размер:"
             app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/pricetext"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/pricetext" />
 
         <TextView
             android:id="@+id/size"
@@ -120,7 +119,7 @@
             android:layout_height="wrap_content"
             android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/pricetext"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/pricetext" />
 
         <TextView
             android:id="@+id/widthtext"
@@ -129,7 +128,7 @@
             android:layout_height="wrap_content"
             android:text="Ширина:"
             app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/lengthtext"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/lengthtext" />
 
         <TextView
             android:id="@+id/fablricslisttext"
@@ -138,7 +137,7 @@
             android:layout_height="wrap_content"
             android:text="Список тканей:"
             app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/widthtext"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/widthtext" />
 
         <TextView
             android:id="@+id/fablricslist"
@@ -147,7 +146,7 @@
             android:layout_height="wrap_content"
             android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/widthtext"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/widthtext" />
 
         <TextView
             android:id="@+id/fittingslisttext"
@@ -156,7 +155,7 @@
             android:layout_height="wrap_content"
             android:text="Фурнитура:"
             app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/fablricslist"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/fablricslist" />
 
         <TextView
             android:id="@+id/fittingslist"
@@ -165,7 +164,7 @@
             android:layout_height="wrap_content"
             android:text=""
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/fablricslist"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/fablricslist" />
 
         <TextView
             android:id="@+id/commenttext"
@@ -175,7 +174,7 @@
             android:layout_marginTop="4dp"
             android:text="Описание:"
             app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/fittingslist"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/fittingslist" />
 
         <TextView
             android:id="@+id/comment"
@@ -185,32 +184,32 @@
             android:text=""
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/fittingslist"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/fittingslist" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
         android:id="@+id/shadowframe"
-        app:layout_constraintTop_toBottomOf="@id/textframe"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:background="@drawable/drop_shadow_blue"
-        tools:ignore="MissingConstraints">
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@id/textframe"
+        tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/change_title"
+        style="@style/TextInfoStyle"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        style="@style/TextInfoStyle"
-        android:layout_marginTop="0dp"
         android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
         android:background="@color/blue_back"
-        app:layout_constraintTop_toBottomOf="@id/shadowframe"
         android:paddingTop="8dp"
-        android:textAlignment="center"
-        android:textSize="30dp"
         android:shadowColor="@color/black"
-        android:text="История изменений">
+        android:text="История изменений"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/shadowframe">
 
     </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>

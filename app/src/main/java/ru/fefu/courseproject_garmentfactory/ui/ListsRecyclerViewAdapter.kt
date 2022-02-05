@@ -1,4 +1,5 @@
 package ru.fefu.courseproject_garmentfactory.ui
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,8 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.fefu.courseproject_garmentfactory.R
 
-class ListRecyclerViewAdapter(private val listItems: List<ItemListData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var ItemClickListener: (Int) -> Unit = {}
+class ListRecyclerViewAdapter(private val listItems: List<ItemListData>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private var itemClickListener: (Int) -> Unit = {}
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -16,35 +18,34 @@ class ListRecyclerViewAdapter(private val listItems: List<ItemListData>) : Recyc
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
         return MyViewHolder(view)
     }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as MyViewHolder).bind(listItems[position] as ItemListData)
+        (holder as MyViewHolder).bind(listItems[position])
     }
 
     override fun getItemViewType(position: Int): Int {
         return 0
     }
 
-    override fun getItemCount(): Int = listItems.size;
+    override fun getItemCount(): Int = listItems.size
 
     fun setItemClickListener(listener: (Int) -> Unit) {
-        ItemClickListener = listener
+        itemClickListener = listener
     }
 
-    inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var id: Int = -1
         private val name = itemView.findViewById<TextView>(R.id.name)
         private val code = itemView.findViewById<TextView>(R.id.code)
         private val image: ImageView = itemView.findViewById(R.id.image)
-        private val count= itemView.findViewById<TextView>(R.id.count)
+        private val count = itemView.findViewById<TextView>(R.id.count)
         private val counttext = itemView.findViewById<TextView>(R.id.counttext)
+
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
-                ItemClickListener.invoke(position)
+                itemClickListener.invoke(position)
             }
-        }
-        fun getId(): Int{
-            return id
         }
 
         fun bind(item: ItemListData) {
@@ -52,7 +53,7 @@ class ListRecyclerViewAdapter(private val listItems: List<ItemListData>) : Recyc
             name.text = item.name
             code.text = item.article.toString()
             count.text = item.count.toString()
-            if(item.count>0){
+            if (item.count > 0) {
                 count.visibility = View.VISIBLE
                 counttext.visibility = View.VISIBLE
             }

@@ -2,10 +2,10 @@ package ru.fefu.courseproject_garmentfactory.ui.lists.tabs
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import retrofit2.Call
@@ -25,7 +25,7 @@ class FittingsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFittingsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -37,17 +37,20 @@ class FittingsFragment : Fragment() {
         recycleView.adapter = adapter
         adapter.setItemClickListener {
             val bundle = Bundle()
-            bundle.putInt("article",items[it].article )
-            bundle.putString("name",items[it].name )
-            bundle.putString("image",items[it].image )
-            bundle.putInt("width",items[it].width )
-            bundle.putInt("length",items[it].width )
-            bundle.putDouble("weight",items[it].weight )
-            bundle.putInt("price",items[it].price )
-            bundle.putString("type",items[it].type )
-            bundle.putBoolean("kilos",items[it].kg_acceptable)
+            bundle.putInt("article", items[it].article)
+            bundle.putString("name", items[it].name)
+            bundle.putString("image", items[it].image)
+            bundle.putInt("width", items[it].width)
+            bundle.putInt("length", items[it].width)
+            bundle.putDouble("weight", items[it].weight)
+            bundle.putInt("price", items[it].price)
+            bundle.putString("type", items[it].type)
+            bundle.putBoolean("kilos", items[it].kg_acceptable)
             arguments = bundle
-            findNavController().navigate(R.id.action_navigation_lists_to_fittingsInfoFragment,arguments)
+            findNavController().navigate(
+                R.id.action_navigation_lists_to_fittingsInfoFragment,
+                arguments
+            )
         }
         getFittings()
     }
@@ -62,7 +65,7 @@ class FittingsFragment : Fragment() {
                     var isNew = false
                     Log.i("success get accessories", response.body().toString())
                     val body = response.body()
-                    body?.forEach{
+                    body?.forEach {
                         if (!items.contains(it)) {
                             items.add(it)
                             isNew = true
@@ -72,8 +75,7 @@ class FittingsFragment : Fragment() {
                         adapter.notifyDataSetChanged()
                     }
 
-                }
-                else {
+                } else {
                     Log.e("get list accessories", "not auth")
                 }
             }

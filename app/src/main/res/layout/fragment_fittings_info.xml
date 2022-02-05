@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.lists.details.FittingsInfoFragment"
-    >
+    tools:context=".ui.lists.details.FittingsInfoFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -17,21 +15,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_back"
-        app:title="Title"
-        />
+        app:title="Title" />
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <FrameLayout
                 android:id="@+id/imageframe"
@@ -47,7 +44,7 @@
                     android:layout_height="250dp"
                     android:src="@drawable/default_image"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent" />
             </FrameLayout>
 
             <FrameLayout
@@ -56,7 +53,7 @@
                 android:layout_height="20dp"
                 android:background="@drawable/drop_shadow"
                 app:layout_constraintTop_toBottomOf="@id/imageframe"
-                tools:ignore="MissingConstraints"/>
+                tools:ignore="MissingConstraints" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/textframe"
@@ -80,7 +77,7 @@
                     android:paddingTop="25dp"
                     android:text=""
                     app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/type"
@@ -89,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@id/code"/>
+                    app:layout_constraintTop_toBottomOf="@id/code" />
 
                 <TextView
                     android:id="@+id/width"
@@ -98,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@id/typetext"/>
+                    app:layout_constraintTop_toBottomOf="@id/typetext" />
 
                 <TextView
                     android:id="@+id/length"
@@ -107,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@id/widthtext"/>
+                    app:layout_constraintTop_toBottomOf="@id/widthtext" />
 
                 <TextView
                     android:id="@+id/weight"
@@ -116,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@id/lengthtext"/>
+                    app:layout_constraintTop_toBottomOf="@id/lengthtext" />
 
                 <TextView
                     android:id="@+id/price"
@@ -125,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/weighttext"/>
+                    app:layout_constraintTop_toBottomOf="@+id/weighttext" />
 
                 <TextView
                     android:id="@+id/count"
@@ -134,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/price"/>
+                    app:layout_constraintTop_toBottomOf="@+id/price" />
 
                 <TextView
                     android:id="@+id/codetext"
@@ -144,7 +141,7 @@
                     android:paddingTop="25dp"
                     android:text="Артикул:"
                     app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/typetext"
@@ -153,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:text="Тип:"
                     app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@id/codetext"/>
+                    app:layout_constraintTop_toBottomOf="@id/codetext" />
 
                 <TextView
                     android:id="@+id/widthtext"
@@ -162,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:text="Ширина:"
                     app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@id/typetext"/>
+                    app:layout_constraintTop_toBottomOf="@id/typetext" />
 
                 <TextView
                     android:id="@+id/lengthtext"
@@ -171,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:text="Длина:"
                     app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@id/widthtext"/>
+                    app:layout_constraintTop_toBottomOf="@id/widthtext" />
 
                 <TextView
                     android:id="@+id/weighttext"
@@ -180,7 +177,7 @@
                     android:layout_height="wrap_content"
                     android:text="Вес:"
                     app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@id/lengthtext"/>
+                    app:layout_constraintTop_toBottomOf="@id/lengthtext" />
 
                 <TextView
                     android:id="@+id/pricetext"
@@ -189,7 +186,7 @@
                     android:layout_height="wrap_content"
                     android:text="Цена:"
                     app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@id/weighttext"/>
+                    app:layout_constraintTop_toBottomOf="@id/weighttext" />
 
                 <TextView
                     android:id="@+id/counttext"
@@ -198,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:text="Количество:"
                     app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-                    app:layout_constraintTop_toBottomOf="@id/pricetext"/>
+                    app:layout_constraintTop_toBottomOf="@id/pricetext" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
@@ -239,28 +236,28 @@
 
             </LinearLayout>
 
-                <RadioGroup
-                    android:id="@+id/radio_group"
-                    android:layout_width="match_parent"
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/kilos"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="30dp">
+                    android:text="В килограммах" />
 
-                    <RadioButton
-                        android:id="@+id/kilos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="В килограммах" />
+                <RadioButton
+                    android:id="@+id/pcs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:checked="true"
+                    android:text="В штуках" />
 
-                    <RadioButton
-                        android:id="@+id/pcs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="В штуках"
-                        android:checked="true"
-                        android:layout_marginStart="10dp"/>
-
-                </RadioGroup>
+            </RadioGroup>
 
 
         </LinearLayout>

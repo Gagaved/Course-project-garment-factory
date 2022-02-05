@@ -1,12 +1,12 @@
 package ru.fefu.courseproject_garmentfactory.ui.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,13 +30,14 @@ class LoginActivity : AppCompatActivity() {
         val button = binding.loginButtonLogin
         button.setOnClickListener(loginOnClickListener)
     }
-    private fun checkToken(){
+
+    private fun checkToken() {
         if (App.getSharedPref.contains(App.APP_PREFERENCES_TOKEN))
             App.getSharedPref.getString(App.APP_PREFERENCES_TOKEN, "")?.let {
-                App.getApi.getProfile(it).enqueue(object: Callback<Profile>{
+                App.getApi.getProfile(it).enqueue(object : Callback<Profile> {
                     override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
                         if (response.isSuccessful) {
-                            App.current_role = response.body()?.role?:-1
+                            App.current_role = response.body()?.role ?: -1
                         }
                     }
 
@@ -46,12 +47,13 @@ class LoginActivity : AppCompatActivity() {
                 })
             }
     }
+
     private val loginOnClickListener = View.OnClickListener {
         spinner.visibility = View.VISIBLE
         val login = binding.loginInputLogin.text.toString()
         val pass = binding.passInputLogin.text.toString()
         val data = LoginRequest(login, pass)
-        App.getApi.login(data = data).enqueue(object: Callback<LoginResponse> {
+        App.getApi.login(data = data).enqueue(object : Callback<LoginResponse> {
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 Log.i("failLogin", t.message.toString())
                 spinner.visibility = View.INVISIBLE
@@ -76,7 +78,8 @@ class LoginActivity : AppCompatActivity() {
                 } else {
                     when (response.code()) {
                         401 -> {
-                            textError.text = "Неправильная связка логин-пароль, проверьте правильность введённых данных"
+                            textError.text =
+                                "Неправильная связка логин-пароль, проверьте правильность введённых данных"
                         }
                         else -> {
                             textError.text = response.message()
